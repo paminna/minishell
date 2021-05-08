@@ -43,3 +43,51 @@ char	*ft_strdup(const char *s1)
 	buffer[i] = '\0';
 	return (buffer);
 }
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*new;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	new = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (new == NULL)
+		return (NULL);
+	while (s1[i])
+		new[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		new[j++] = s2[i++];
+	new[j] = '\0';
+	return (new);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	str = (char*)s;
+	while (i != n)
+	{
+		str[i] = '\0';
+		i++;
+	}
+}
+
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void *result;
+
+	result = malloc(size * count);
+	if (result == 0)
+		return (NULL);
+	ft_bzero(result, size * count);
+	return (result);
+}
