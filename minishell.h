@@ -23,6 +23,11 @@ typedef struct s_env
 	int		count_lines;
 }				t_env;
 
+typedef	struct	s_flags
+{
+	int flag_new_key;
+}				t_flags;
+
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);

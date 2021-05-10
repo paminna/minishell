@@ -55,7 +55,6 @@ void	ft_pwd()
 
 void	ft_copy_env(char **env, t_env *env_struct)
 {
-	// int	count_lines;
 	int i;
 	int j;
 
@@ -81,14 +80,13 @@ void	ft_sort_exp(char **env, t_env *env_struct)
 	int 	j;
 	char	*swap;
 
-	// swap = (char*)malloc(env_struct->max_len + 1);
 	i = 0;
 	j = 0;
 	while (i < env_struct->count_lines)
 	{
 		while (j < env_struct->count_lines - i - 1)
 		{
-			if (ft_strcmp(env[j], env[j + 1]) > 0)				//env[i][j] > env[i + 1][j]
+			if (ft_strcmp(env[j], env[j + 1]) > 0)
 			{
 				swap = env[j];
 				env[j] = env[j + 1];
@@ -99,12 +97,59 @@ void	ft_sort_exp(char **env, t_env *env_struct)
 		j = 0;
 		i++;
 	}
-	// free(swap);
+}
+
+void	ft_check_all_keys(t_env *env_struct)
+{
+	int i;
+	int j;
+	int len_key;
+	int flag;
+
+	i = 0;
+	j = 0;
+	flag = 0;
+	while (env_struct->env[i])
+	{
+		while (env_struct->env[i][j] != '=')
+			j++;
+		len_key = --j;
+		if (ft_strncmp(env_struct->env[i], env_struct->key, len_key) > 0)
+			flag = 1;
+		j = 0;
+		i++;
+	}
+	if (flag == 1)
+		
+}
+
+void	ft_check_exports(t_env *env_struct, char **env)
+{
+	int i;
+
+	i = 0;
+	if (env_struct->key)
+	{
+		free(env_struct->env);
+		env_struct->count_lines++;
+		env_struct->env = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
+	}
+	if (!env_struct->env)
+		ft_errors("malloc error");
+	while (i < env_struct->count_lines - 1)
+	{
+		env_struct->env[i] = ft_strdup(env[i]);
+		i++;
+	}
+	ft_check_all_keys(env_struct);
+	if (env_struct->key && env_struct->value)
+		env_struct->env[i] = ft_strjoin(env_struct->key, env_struct->value);
+	else if (env_struct->key)
+		env_struct->env[i] = ft_strdup(env_struct->key);
 }
 
 void	ft_copy_exp(char **env, t_env *env_struct)
 {
-	// int	count_lines;
 	int i;
 	int j;
 
@@ -114,6 +159,7 @@ void	ft_copy_exp(char **env, t_env *env_struct)
 		i++;
 	env_struct->count_lines = i;
 	i = 0;
+	ft_check_exports(env_struct, env);
 	env_struct->exp = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
 	if (!env_struct->exp)
 		ft_errors("malloc error");
@@ -145,10 +191,6 @@ void	ft_out_env(t_env *env_struct)
 	}
 }
 
-void	ft_check_exports(t_env *env_struct)
-{
-	
-}
 
 void	ft_out_exp(t_env *env_struct)
 {
@@ -157,7 +199,6 @@ void	ft_out_exp(t_env *env_struct)
 
 	i = 0;
 	j = 0;
-	ft_check_exports(env_struct);
 	while (env_struct->exp[i])
 	{
 		while (env_struct->exp[i][j])
@@ -190,6 +231,8 @@ int main(int argc, char **argv, char **env)
 	// all->result[2] = (char*)malloc(4);
 	// all->result[2] = "env";
 	// all->result[3] = (char*)malloc(4);
+	env_struct.key = "name";
+	env_struct.value = "=value";
 	all->result[3] = "exp";
 	all->flag = 0;
 	// if (ft_strncmp(all->result[0], "echo", 3) == 0)
