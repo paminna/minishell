@@ -13,6 +13,11 @@ typedef	struct s_all
 	char	**env;
 }				t_all;
 
+typedef	struct	s_flags
+{
+	int			new_key;
+}				t_flags;
+
 typedef struct s_env
 {
 	char	**env;
@@ -21,12 +26,9 @@ typedef struct s_env
 	char	*value;
 	int		max_len;
 	int		count_lines;
+	t_flags flags;
 }				t_env;
 
-typedef	struct	s_flags
-{
-	int flag_new_key;
-}				t_flags;
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
@@ -35,5 +37,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
+
 
 #endif

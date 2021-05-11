@@ -115,12 +115,10 @@ void	ft_check_all_keys(t_env *env_struct)
 			j++;
 		len_key = --j;
 		if (ft_strncmp(env_struct->env[i], env_struct->key, len_key) > 0)
-			flag = 1;
+			env_struct->flags.new_key = 1;
 		j = 0;
 		i++;
 	}
-	if (flag == 1)
-		
 }
 
 void	ft_check_exports(t_env *env_struct, char **env)
@@ -128,12 +126,13 @@ void	ft_check_exports(t_env *env_struct, char **env)
 	int i;
 
 	i = 0;
+	ft_check_all_keys(env_struct);
 	if (env_struct->key)
 	{
 		free(env_struct->env);
 		env_struct->count_lines++;
-		env_struct->env = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
 	}
+	env_struct->env = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
 	if (!env_struct->env)
 		ft_errors("malloc error");
 	while (i < env_struct->count_lines - 1)
@@ -141,7 +140,6 @@ void	ft_check_exports(t_env *env_struct, char **env)
 		env_struct->env[i] = ft_strdup(env[i]);
 		i++;
 	}
-	ft_check_all_keys(env_struct);
 	if (env_struct->key && env_struct->value)
 		env_struct->env[i] = ft_strjoin(env_struct->key, env_struct->value);
 	else if (env_struct->key)
@@ -160,7 +158,7 @@ void	ft_copy_exp(char **env, t_env *env_struct)
 	env_struct->count_lines = i;
 	i = 0;
 	ft_check_exports(env_struct, env);
-	env_struct->exp = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
+	// env_struct->exp = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
 	if (!env_struct->exp)
 		ft_errors("malloc error");
 	ft_sort_exp(env, env_struct);
