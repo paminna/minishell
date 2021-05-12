@@ -16,6 +16,7 @@ typedef	struct s_all
 typedef	struct	s_flags
 {
 	int			new_key;
+	int			empty_val;
 }				t_flags;
 
 typedef struct s_env

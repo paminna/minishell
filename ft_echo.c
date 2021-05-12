@@ -104,26 +104,36 @@ void	ft_check_all_keys(t_env *env_struct)
 	int i;
 	int j;
 	int len_key;
-	int flag;
 
 	i = 0;
 	j = 0;
-	flag = 0;
 	while (env_struct->env[i])
 	{
 		while (env_struct->env[i][j] != '=')
+		{
 			j++;
-		len_key = --j;
-		if (ft_strncmp(env_struct->env[i], env_struct->key, len_key) > 0)
-			env_struct->flags.new_key = 1;
+			len_key = --j;
+			if (ft_strncmp(env_struct->env[i], env_struct->key, len_key) == 0)
+				env_struct->flags.new_key = 1;
+		}
 		j = 0;
 		i++;
 	}
 }
 
+// void	ft_check_value(t_env *env_struct)
+// {
+// 	int i;
+// 	while (env_struct->value[i] != '\0')
+// 		i++;
+// 	if (env_struct->value[i] == '=')
+// 		env_struct->flags.empty_val = 1;
+// }
+
 void	ft_check_exports(t_env *env_struct, char **env)
 {
 	int i;
+	int j;
 
 	i = 0;
 	ft_check_all_keys(env_struct);
@@ -140,10 +150,17 @@ void	ft_check_exports(t_env *env_struct, char **env)
 		env_struct->env[i] = ft_strdup(env[i]);
 		i++;
 	}
-	if (env_struct->key && env_struct->value)
+	// ft_check_value(env_struct);
+	if (env_struct->key && env_struct->flags.new_key && env_struct->value)
+	{
+		env_struct->exp[i] = ft_strjoin(env_struct->key, env_struct->value);
 		env_struct->env[i] = ft_strjoin(env_struct->key, env_struct->value);
-	else if (env_struct->key)
+	}
+	else if (env_struct->key && env_struct->flags.new_key)
+	{
 		env_struct->env[i] = ft_strdup(env_struct->key);
+		env_struct->exp[i] = ft_strdup(env_struct->key);
+	}
 }
 
 void	ft_copy_exp(char **env, t_env *env_struct)
@@ -210,13 +227,18 @@ void	ft_out_exp(t_env *env_struct)
 	}
 }
 
+void	ft_init_flags(t_env *env_struct)
+{
+	env_struct->flags.empty_val = 0;
+	env_struct->flags.new_key = 0;
+}
 
 int main(int argc, char **argv, char **env)
 {
 	t_all *all;
 	t_env env_struct;
 	// int i = 0;
-
+	ft_init_flags(&env_struct);
 	ft_copy_env(env, &env_struct);
 	ft_copy_exp(env, &env_struct);
 	(void)argc;
