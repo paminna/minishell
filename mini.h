@@ -32,8 +32,8 @@ typedef struct		s_list
 
 typedef struct		s_list_env
 {
-	char			key;
-	//char			*value;
+	char			*key;
+	char			*value;
 }					t_list_env;
 
 typedef struct s_all
