@@ -159,38 +159,47 @@ char *skip_space(char *str)
 	return(str);
 }
 
-
-char *ft_list(char **str)
-{
-	int len;
-	char *s;
-
-	s = *str;
-	len = 0;
-	while (s[len] && s[len] != ' ' && s[len] != ';')
-		len++;
-	return (ft_strn(str, len));
-}
-
-char *ft_strn(char **str, int len)
+char	*ft_new(char *str, int len)
 {
 	char	*s;
 	int		i;
-	char	*tmp;
 
-	tmp = *str;
 	i = 0;
 	s = malloc(sizeof(char) * (len + 1));
-	while (i < len)
+	while (str && i < len)
 	{
-		s[i] = tmp[i];
-		i++;
+		if (*str != '\\')
+			s[i++] = *str;
+		else if (*(str + 1) == '\\')
+			s[i++] = *str++;
+		str++;
 	}
-	//s[++i] = '\0';
 	s[i] = '\0';
-	*str += len;
 	return (s);
 }
+
+char	*before(char **str)
+{
+	int		count;
+	char	*s;
+	int		i;
+
+	s = *str;
+	count = 0;
+	i = 0;
+	while (s[i] && s[i] != ' ' && s[i] != ';' && s[i] != '\"' && s[i] != '\'' \
+				&& s[i] != '$' && s[i] != '>' && s[i] != '<' && s[i] != '|')
+	{
+		count++;
+		if (s[i] == '\\')
+			i++;
+		i++;
+	}
+	s = ft_new(*str, count);
+	*str += i;
+	return (s);
+}
+
 
 static void	ft_free_arr(char **arr)
 {
@@ -251,7 +260,7 @@ void	check_sim(char *str)
 
 char	check_spec_s(char c)
 {
-	if (c == '\"')
+	if (c == '\\' || c == '\"' || c == '\'')
 		return (c);
 	return (0);
 }
@@ -265,13 +274,12 @@ char *new_str_with_q(char **str, int cnt_quot)
 	char d_q;
 
 	save = *str;
-	d_q = '\"';
 	s = (char*)malloc(sizeof(char) * (cnt_quot + 1));
 	i = 0;
 	n = 0;
 	while (i < cnt_quot)
 	{
-		if(d_q == '\"' && check_spec_s(save[n + 1]) && save[n] == '\\')
+		if(save[n] == '\\' && check_spec_s(save[n + 1]))
 			s[i++] = check_spec_s(save[++n]);
 		if(save[n] != '\"')
 			s[i++] = save[n];
@@ -280,16 +288,13 @@ char *new_str_with_q(char **str, int cnt_quot)
 	s[i] = '\0';
 	*str = *str + cnt_quot;
 	return(s);
-
-
-
 }
+
 char *check_double_quotes(char **str)
 {
 	int i;
 	int cnt_quot;
 	char *s;
-	char *d;
 
 	i = 0;
 	cnt_quot = 0;
@@ -298,10 +303,12 @@ char *check_double_quotes(char **str)
 	{
 		if (s[i] != '\"')
 			cnt_quot++;
+		if (s[i] == '\\' && check_spec_s(s[i + 1]))
+			i++;
 		i++;
 	}
 	s = new_str_with_q(str, cnt_quot);
-	*str += cnt_quot - i;
+	*str += i - cnt_quot;
 	if (**str != 0)
 		*str++;
 	return (s);
@@ -311,6 +318,8 @@ char *parser_result(char **str)
 {
 	if(**str == '\"')
 		return(check_double_quotes(str));
+	else
+		return(before(str));
 }
 
 //typedef struct s_pare
@@ -324,19 +333,6 @@ char *parser_result(char **str)
 //	return((t_pare){.str1 = "abc", .str2 = "dce"});
 //};
 
-char	*strjoin_free(char *str1, char *str2)
-{
-	char	*p;
-
-	if (!str1)
-		return (str2);
-	if (!str2)
-		return (str1);
-	p = ft_strjoin(str1, str2);
-	free(str1);
-	free(str2);
-	return (p);
-}
 
 t_all *parser(char *str, t_all *all)
 {
@@ -350,12 +346,12 @@ t_all *parser(char *str, t_all *all)
 	while (*str != '\0')
 	{
 		str = skip_space(str);
-		check_sim(str);
+		//check_sim(str);
 		s = parser_result(&str);
 //		while (*str != '\0' && *str != ' ' && *str != ';' && *str != '|')
 //			s = strjoin_free(s,  parser_result(&str));
 
-		s = ft_list(&str);
+//		s = before(&str);
 		ft_lstadd_back(&words, ft_lstnew(s));
 		count++;
 		str = skip_space(str);

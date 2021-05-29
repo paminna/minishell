@@ -17,6 +17,27 @@ static size_t		ft_len(int n)
 	return (i);
 }
 
+
+void	ft_lstclear(t_list **lst, void (*del_f)(void *))
+{
+	t_list	*temp_lst;
+	t_list	*to_del_node;
+
+	if ((!lst && !(*lst) && !del_f) || !lst || !(*lst) || !del_f)
+		return ;
+	temp_lst = *lst;
+	while (temp_lst)
+	{
+		if (temp_lst->content)
+			del_f(temp_lst->content);
+		to_del_node = temp_lst;
+		temp_lst = temp_lst->next;
+		free(to_del_node);
+	}
+	*lst = NULL;
+}
+
+
 char				*ft_itoa(int n)
 {
 	size_t	len;
@@ -110,9 +131,13 @@ void	ft_putstr_fd(char *s, int fd)
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
+	if (!str1)
+		return (-1);
+	if (!str2)
+		return (1);
 	while ((str1[i] || str2[i]) && i < n)
 	{
 		if (str1[i] != str2[i])
