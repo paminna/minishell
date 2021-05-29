@@ -150,6 +150,9 @@ void find_command(t_all *all)
 		parser_echo(all->result);
 	else if (!ft_strncmp(all->result[0], "export", 7))
 		parser_export(all->result);
+//	else
+//		write(2, "Minishell>> ", 12);
+
 }
 
 char *skip_space(char *str)
@@ -234,7 +237,7 @@ void	check_sim(char *str)
 	{
 		write(2, "Minishell>> ", 12);
 		ft_putstr_fd(str, 2);
-		write(2,": no such job", 35);
+		write(2,": no such job", 13);
 		return ;
 	}
 	if (*str == '^')
@@ -244,7 +247,7 @@ void	check_sim(char *str)
 			write(2, "Minishell>> ", 12);
 			write(2,":s", 2);
 			ft_putstr_fd(str, 2);
-			write(2,": substitution failed", 22);
+			write(2,": substitution failed", 21);
 			return ;
 		}
 		else
@@ -271,7 +274,6 @@ char *new_str_with_q(char **str, int cnt_quot)
 	char *s;
 	int i;
 	int n;
-	char d_q;
 
 	save = *str;
 	s = (char*)malloc(sizeof(char) * (cnt_quot + 1));
@@ -299,7 +301,7 @@ char *check_double_quotes(char **str)
 	i = 0;
 	cnt_quot = 0;
 	s = ++(*str);
-	while (s[i] && s[i] != '\"')
+	while (s[i] != '\0' && s[i] != '\"')
 	{
 		if (s[i] != '\"')
 			cnt_quot++;
@@ -314,10 +316,55 @@ char *check_double_quotes(char **str)
 	return (s);
 }
 
+char *new_str_with_s_q(char **str, int cnt_quot)
+{
+	char *save;
+	char *s;
+	int i;
+	int n;
+
+	save = *str;
+	s = (char*)malloc(sizeof(char) * (cnt_quot + 1));
+	i = 0;
+	n = 0;
+	while (i < cnt_quot)
+	{
+		if(save[n] != '\'')
+			s[i++] = save[n];
+		n++;
+	}
+	s[i] = '\0';
+	*str = *str + cnt_quot;
+	return(s);
+}
+
+char *check_single_quotes(char **str)
+{
+	int i;
+	int cnt_quot;
+	char *s;
+
+	i = 0;
+	cnt_quot = 0;
+	s = ++(*str);
+	while (s[i] != '\0' && s[i] != '\'')
+	{
+		if (s[i] != '\'')
+			cnt_quot++;
+		i++;
+	}
+	s = new_str_with_s_q(str, cnt_quot);
+	*str += i - cnt_quot + 1;
+	return (s);
+
+}
+
 char *parser_result(char **str)
 {
 	if(**str == '\"')
 		return(check_double_quotes(str));
+	if(**str == '\'')
+		return(check_single_quotes(str));
 	else
 		return(before(str));
 }
@@ -346,7 +393,7 @@ t_all *parser(char *str, t_all *all)
 	while (*str != '\0')
 	{
 		str = skip_space(str);
-		//check_sim(str);
+		check_sim(str);
 		s = parser_result(&str);
 //		while (*str != '\0' && *str != ' ' && *str != ';' && *str != '|')
 //			s = strjoin_free(s,  parser_result(&str));
