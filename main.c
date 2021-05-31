@@ -263,24 +263,14 @@ void	check_sim(char *str)
 
 char *parser_result(char **str)
 {
-	if(**str == '\"')
+	if (**str == '\"')
 		return(check_double_quotes(str));
-	if(**str == '\'')
+	if (**str == '\'')
 		return(check_single_quotes(str));
 	else
 		return(before(str));
 }
 
-//typedef struct s_pare
-//{
-//	char *str1;
-//	char *str2;
-//}t_pare;
-
-//t_pare pare2()
-//{
-//	return((t_pare){.str1 = "abc", .str2 = "dce"});
-//};
 
 void	lst_err_check(t_cnt *words, t_cnt *pipe, char **s)
 {
@@ -294,13 +284,44 @@ void	lst_err_check(t_cnt *words, t_cnt *pipe, char **s)
 	}
 }
 
+void clear_lists_words_and_pipe(t_cnt *words, t_cnt *pipe)
+{
+	ft_lstclear(&words->lst, free);
+	words->count = 0;
+	ft_lstclear(&pipe->lst, free);
+	pipe->count = 0;
+}
+
+void add_to_result(t_cnt *words, t_cnt *pipe, t_all *all, char **str)
+{
+	t_list *list;
+	int j;
+
+	if (words->count != 0)
+	{
+		list = words->lst;
+		all->result = malloc(sizeof(char *) * (words->count + 1));
+		all->result[words->count] = NULL;
+		j = 0;
+		while (j < words->count)
+		{
+			all->result[j++] = list->content;
+			list = list->next;
+		}
+		if(**all->result)
+			lst_err_check(words, pipe, str);
+		ft_lstadd_back(&pipe->lst, ft_lstnew(all->result));
+		pipe->count++;
+		if (pipe->count == 1)
+			find_command(all);
+	}
+	clear_lists_words_and_pipe(words, pipe);
+}
+
 t_all *parser(char *str, t_all *all)
 {
 	t_cnt words;
 	t_cnt pipe;
-	t_list *list;
-	int j;
-	//int		len;
 	char *s;
 
 	ft_bzero(&words, sizeof(t_cnt));
@@ -308,60 +329,18 @@ t_all *parser(char *str, t_all *all)
 	while (*str != '\0')
 	{
 		str = skip_space(str);
-		//check_sim(str);
+		check_sim(str);
 		s = parser_result(&str);
 		ft_lstadd_back(&words.lst, ft_lstnew(s));
 		words.count++;
 		str = skip_space(str);
 		if (*str == ';')
 		{
-			if (words.count != 0)
-			{
-				list = words.lst;
-				all->result = malloc(sizeof(char *) * (words.count + 1));
-				all->result[words.count] = NULL;
-				j = 0;
-				while (j < words.count)
-				{
-					all->result[j++] = list->content;
-					list = list->next;
-				}
-				if(**all->result)
-					lst_err_check(&words, &pipe, &str);
-				ft_lstadd_back(&pipe.lst, ft_lstnew(all->result));
-				pipe.count++;
-				if (pipe.count == 1)
-					find_command(all);
-			}
-			ft_lstclear(&words.lst, free);
-			words.count = 0;
-			ft_lstclear(&pipe.lst, free);
-			pipe.count = 0;
+			add_to_result(&words, &pipe, all, &str);
 			str++;
 		}
 	}
-	if (words.count != 0)
-	{
-		list = words.lst;
-		all->result = malloc(sizeof(char *) * (words.count + 1));
-		all->result[words.count] = NULL;
-		j = 0;
-		while (j < words.count)
-		{
-			all->result[j++] = list->content;
-			list = list->next;
-		}
-		if(**all->result)
-			lst_err_check(&words, &pipe, &str);
-		ft_lstadd_back(&pipe.lst, ft_lstnew(all->result));
-		pipe.count++;
-		if (pipe.count == 1)
-			find_command(all);
-	}
-	ft_lstclear(&words.lst, free);
-	words.count = 0;
-	ft_lstclear(&pipe.lst, free);
-	pipe.count = 0;
+	add_to_result(&words, &pipe, all, &str);
 	return (all);
 }
 
