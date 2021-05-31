@@ -261,104 +261,6 @@ void	check_sim(char *str)
 	}
 }
 
-char	check_spec_s(char c)
-{
-	if (c == '\\' || c == '\"' || c == '\'')
-		return (c);
-	return (0);
-}
-
-char *new_str_with_q(char **str, int cnt_quot)
-{
-	char *save;
-	char *s;
-	int i;
-	int n;
-
-	save = *str;
-	s = (char*)malloc(sizeof(char) * (cnt_quot + 1));
-	i = 0;
-	n = 0;
-	while (i < cnt_quot)
-	{
-		if(save[n] == '\\' && check_spec_s(save[n + 1]))
-			s[i++] = check_spec_s(save[++n]);
-		if(save[n] != '\"')
-			s[i++] = save[n];
-		n++;
-	}
-	s[i] = '\0';
-	*str = *str + cnt_quot;
-	return(s);
-}
-
-char *check_double_quotes(char **str)
-{
-	int i;
-	int cnt_quot;
-	char *s;
-
-	i = 0;
-	cnt_quot = 0;
-	s = ++(*str);
-	while (s[i] != '\0' && s[i] != '\"')
-	{
-		if (s[i] != '\"')
-			cnt_quot++;
-		if (s[i] == '\\' && check_spec_s(s[i + 1]))
-			i++;
-		i++;
-	}
-	s = new_str_with_q(str, cnt_quot);
-	*str += i - cnt_quot;
-	if (**str != 0)
-		*str++;
-	return (s);
-}
-
-char *new_str_with_s_q(char **str, int cnt_quot)
-{
-	char *save;
-	char *s;
-	int i;
-	int n;
-
-	save = *str;
-	s = (char*)malloc(sizeof(char) * (cnt_quot + 1));
-	i = 0;
-	n = 0;
-	while (i < cnt_quot)
-	{
-		if(save[n] != '\'')
-			s[i++] = save[n];
-		n++;
-	}
-	s[i] = '\0';
-	*str = *str + cnt_quot;
-	return(s);
-}
-
-char *check_single_quotes(char **str)
-{
-	int i;
-	int cnt_quot;
-	char *s;
-
-	i = 0;
-	cnt_quot = 0;
-	s = ++(*str);
-	while (s[i] != '\0' && s[i] != '\'')
-	{
-		if (s[i] != '\'')
-			cnt_quot++;
-		i++;
-	}
-	s = new_str_with_s_q(str, cnt_quot);
-	*str += i - cnt_quot + 1;
-	return (s);
-
-}
-
 char *parser_result(char **str)
 {
 	if(**str == '\"')
@@ -380,61 +282,86 @@ char *parser_result(char **str)
 //	return((t_pare){.str1 = "abc", .str2 = "dce"});
 //};
 
+void	lst_err_check(t_cnt *words, t_cnt *pipe, char **s)
+{
+	if (*(skip_space(*s + 1)) == ';' || *(skip_space(*s + 1)) == '|')
+	{
+		*(*s + 1) = 0;
+		ft_lstclear(&words->lst, free);
+		words->count = 0;
+		ft_lstclear(&pipe->lst, free);
+		pipe->count = 0;
+	}
+}
 
 t_all *parser(char *str, t_all *all)
 {
-	t_list	*words = NULL;
-	int		count;
-	int		j;
+	t_cnt words;
+	t_cnt pipe;
+	t_list *list;
+	int j;
 	//int		len;
-	char	*s;
+	char *s;
 
-	count = 0;
+	ft_bzero(&words, sizeof(t_cnt));
+	ft_bzero(&pipe, sizeof(t_cnt));
 	while (*str != '\0')
 	{
 		str = skip_space(str);
-		check_sim(str);
+		//check_sim(str);
 		s = parser_result(&str);
-//		while (*str != '\0' && *str != ' ' && *str != ';' && *str != '|')
-//			s = strjoin_free(s,  parser_result(&str));
-
-//		s = before(&str);
-		ft_lstadd_back(&words, ft_lstnew(s));
-		count++;
+		ft_lstadd_back(&words.lst, ft_lstnew(s));
+		words.count++;
 		str = skip_space(str);
-//		if (*str == ';')
-//		{
-//			if (count != 0)
-//			{
-//				all->result = malloc(sizeof(char *) * (count + 1));
-//				all->result[count] = NULL;
-//				j = 0;
-//				while (j < count)
-//				{
-//					all->result[j++] = words->content;
-//					words = words->next;
-//				}
-//				if (ft_strlen(all->result[0]) > 0)
-//					find_command(all);
-//				ft_free_arr(all->result);
-//				count = 0;
-//				str++;
-//			}
-//		}
-	}
-	if (count != 0)
-	{
-		all->result = malloc(sizeof(char *) * (count + 1));
-		all->result[count] = NULL;
-		j = 0;
-		while (j < count) {
-			all->result[j++] = words->content;
-			words = words->next;
+		if (*str == ';')
+		{
+			if (words.count != 0)
+			{
+				list = words.lst;
+				all->result = malloc(sizeof(char *) * (words.count + 1));
+				all->result[words.count] = NULL;
+				j = 0;
+				while (j < words.count)
+				{
+					all->result[j++] = list->content;
+					list = list->next;
+				}
+				if(**all->result)
+					lst_err_check(&words, &pipe, &str);
+				ft_lstadd_back(&pipe.lst, ft_lstnew(all->result));
+				pipe.count++;
+				if (pipe.count == 1)
+					find_command(all);
+			}
+			ft_lstclear(&words.lst, free);
+			words.count = 0;
+			ft_lstclear(&pipe.lst, free);
+			pipe.count = 0;
+			str++;
 		}
-		if (ft_strlen(all->result[0]) > 0)
-			find_command(all);
-		ft_free_arr(all->result);
 	}
+	if (words.count != 0)
+	{
+		list = words.lst;
+		all->result = malloc(sizeof(char *) * (words.count + 1));
+		all->result[words.count] = NULL;
+		j = 0;
+		while (j < words.count)
+		{
+			all->result[j++] = list->content;
+			list = list->next;
+		}
+		if(**all->result)
+			lst_err_check(&words, &pipe, &str);
+		ft_lstadd_back(&pipe.lst, ft_lstnew(all->result));
+		pipe.count++;
+		if (pipe.count == 1)
+			find_command(all);
+	}
+	ft_lstclear(&words.lst, free);
+	words.count = 0;
+	ft_lstclear(&pipe.lst, free);
+	pipe.count = 0;
 	return (all);
 }
 

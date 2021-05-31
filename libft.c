@@ -204,7 +204,8 @@ void	ft_putchar_fd(char c, int fd)
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *temp_lst;
+	t_list	*temp_lst;
+
 	if (!new)
 		return ;
 	if (lst && *lst)

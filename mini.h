@@ -33,7 +33,7 @@ typedef struct		s_list
 
 typedef struct s_cnt
 {
-	t_list	*list;
+	t_list	*lst;
 	int		count;
 }				t_cnt;
 
@@ -85,5 +85,11 @@ void	ft_putendl_fd(char *s, int fd);
 char	*ft_itoa(int nbr);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_lstclear(t_list **lst, void (*del_f)(void *));
+
+char	check_spec_s(char c);
+char *new_str_with_q(char **str, int cnt_quot);
+char *new_str_with_s_q(char **str, int cnt_quot);
+char *check_double_quotes(char **str);
+char *check_single_quotes(char **str);
 
 #endif
