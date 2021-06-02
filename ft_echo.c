@@ -115,6 +115,12 @@ void	ft_check_all_keys(t_env *env_struct)
 	}
 }
 
+void	ft_check_key_val(t_env *env_struct)
+{
+	if (!(ft_isalpha(env_struct->value[0]) || env_struct->value[0] == '_'))
+		ft_errors("not a valid identifier");
+}
+
 void	ft_check_exports(t_env *env_struct, char **env)
 {
 	int i;
@@ -122,6 +128,7 @@ void	ft_check_exports(t_env *env_struct, char **env)
 
 	i = 0;
 	ft_check_all_keys(env_struct);
+	ft_check_key_val(env_struct);
 	if (env_struct->key)
 	{
 		free(env_struct->env);
@@ -225,6 +232,61 @@ void	ft_init_flags(t_env *env_struct)
 {
 	env_struct->flags.empty_val = 0;
 	env_struct->flags.new_key = 0;
+	env_struct->flags.let_unset = 0;
+}
+
+void	ft_check_unset(t_env *env_struct)
+{
+	int i;
+	int len_key;
+	int	j;
+	int k;
+
+	j = 0;
+	len_key = 0;
+	i = 0;
+	k = 0;
+	while (env_struct->unset[i] != '\0')
+	{
+		if (env_struct->unset[i] == '=')
+			ft_errors("not a valid identifier");
+		i++;
+		len_key++;
+	}
+	i = 0;
+	while (env_struct->unset[k])
+	{
+		while (env_struct->unset[k] != env_struct->env[i][j])
+			j++;
+		while (env_struct->unset[k] == env_struct->env[i][j])
+		{
+			k++;
+			j++;
+			if (k == len_key && env_struct->unset[k] == '=')
+				env_struct->flags.let_unset = 1;
+		}
+		j = 0;
+		k++;
+	}
+	// if (i == len_key && env_struct->unset[i] == '=')
+	// 	env_struct->flags.let_unset = 1;
+}
+
+void	ft_unset(t_env *env_struct)
+{
+	int i;
+	int j;
+	int k;
+
+	k = 0;
+	i = 0;
+	j = 0;
+	ft_check_unset(env_struct);
+	if (env_struct->flags.let_unset)
+	{
+		while (env_struct->unset[k] != env_struct->env[i][j])
+			
+	}
 }
 
 int main(int argc, char **argv, char **env)
@@ -233,7 +295,7 @@ int main(int argc, char **argv, char **env)
 	t_env env_struct;
 
 	env_struct.key = "name";
-	env_struct.value = "=value";
+	env_struct.value = "=";
 	// all->result[3] = (char*)malloc(5);
 	// all->result[3] = "exp";
 	ft_init_flags(&env_struct);
@@ -258,4 +320,7 @@ int main(int argc, char **argv, char **env)
 	// 	ft_out_env(all->result[2], &env_struct);
 	// if (ft_strncmp(all->result[3], "exp", 3) == 0)
 		ft_out_exp(&env_struct);
+	if (ft_strncmp(all->result[4], "unset", 3) == 0)
+		ft_unset(&env_struct);
+	
 }

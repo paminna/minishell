@@ -5,29 +5,31 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-typedef	struct s_all
+typedef	struct	s_all
 {
-	char	**result;
-	int		flag;
-	int		i;
-	char	**env;
+	char		**result;
+	int			flag;
+	int			i;
+	char		**env;
 }				t_all;
 
 typedef	struct	s_flags
 {
 	int			new_key;
 	int			empty_val;
+	int			let_unset;
 }				t_flags;
 
-typedef struct s_env
+typedef struct	s_env
 {
-	char	**env;
-	char	**exp;
-	char 	*key;
-	char	*value;
-	int		max_len;
-	int		count_lines;
-	t_flags flags;
+	char		**env;
+	char		**exp;
+	char 		*key;
+	char		*value;
+	char		*unset;
+	int			max_len;
+	int			count_lines;
+	t_flags		flags;
 }				t_env;
 
 
