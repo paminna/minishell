@@ -26,9 +26,11 @@ typedef struct	s_env
 	char		**exp;
 	char 		*key;
 	char		*value;
-	char		*unset;
+	char		unset[12];
 	int			max_len;
 	int			count_lines;
+	int			len_key_unset;
+	// char		**env_copy;
 	t_flags		flags;
 }				t_env;
 
