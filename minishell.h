@@ -27,13 +27,14 @@ typedef struct	s_env
 	char 		*key;
 	char		*value;
 	char		unset[12];
+	char		*old_dir;
+	char		*new_dir;
 	int			max_len;
 	int			count_lines;
 	int			len_key_unset;
 	// char		**env_copy;
 	t_flags		flags;
 }				t_env;
-
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);

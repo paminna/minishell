@@ -359,6 +359,26 @@ void	ft_unset(t_env *env_struct)
 	}
 }
 
+void	ft_cd(t_env *env_struct)
+{
+	int i;
+	int j;
+	int k;
+
+	j = 0;
+	k = 0;
+	i = 0;
+	env_struct->old_dir = getcwd(NULL, 1000);
+	if (chdir(env_struct->new_dir) < 0)
+		// прописать errno strerror
+	while (env_struct->env[i][j] != 'O' || env_struct->env[i][j] != 'P')
+		i++;
+	if (env_struct->env[i][j] != 'O')
+	{
+		while (env_struct->env[i][j])
+	}
+}
+
 int main(int argc, char **argv, char **env)
 {
 	t_all *all;
@@ -393,18 +413,18 @@ int main(int argc, char **argv, char **env)
 	// if (ft_strncmp(all->result[3], "exp", 3) == 0)
 		// ft_out_exp(&env_struct);
 	// if (ft_strncmp(all->result[4], "XPC_FLAGS", 3) == 0)
-	env_struct.unset[0] = 'T';
-	env_struct.unset[1] = 'E';
-	env_struct.unset[2] = 'R';
-	env_struct.unset[3] = 'M';
-	env_struct.unset[4] = '_';
-	env_struct.unset[5] = 'P';
-	env_struct.unset[6] = 'R';
-	env_struct.unset[7] = 'O';
-	env_struct.unset[8] = 'G';
-	env_struct.unset[9] = 'R';
-	env_struct.unset[10] = 'A';
-	env_struct.unset[11] = 'M';
+	// env_struct.unset[0] = 'T';
+	// env_struct.unset[1] = 'E';
+	// env_struct.unset[2] = 'R';
+	// env_struct.unset[3] = 'M';
+	// env_struct.unset[4] = '_';
+	// env_struct.unset[5] = 'P';
+	// env_struct.unset[6] = 'R';
+	// env_struct.unset[7] = 'O';
+	// env_struct.unset[8] = 'G';
+	// env_struct.unset[9] = 'R';
+	// env_struct.unset[10] = 'A';
+	// env_struct.unset[11] = 'M';
 	ft_unset(&env_struct);
-	
+	ft_cd(&env_struct);
 }
