@@ -1,5 +1,6 @@
 #include "mini.h"
-
+#include <curses.h>
+#include <term.h>
 void	parser_echo(char **massiv)
 {
 	int	flag;
@@ -144,12 +145,21 @@ void parser_export(char **massiv)
 		parser_export2(massiv[1]);
 }
 
+void my_exit(char **str)
+{
+	if (str[1] == NULL)
+		exit (0);
+}
+
 void find_command(t_all *all)
 {
 	if (!ft_strncmp(all->result[0], "echo", 5))
 		parser_echo(all->result);
 	else if (!ft_strncmp(all->result[0], "export", 7))
 		parser_export(all->result);
+	else if (!ft_strncmp(all->result[0], "exit", 5))
+		my_exit(all->result);
+
 //	else
 //		write(2, "Minishell>> ", 12);
 
@@ -263,84 +273,226 @@ void	check_sim(char *str)
 
 char *parser_result(char **str)
 {
-	if (**str == '\"')
+	if(**str == '\"')
 		return(check_double_quotes(str));
-	if (**str == '\'')
+	if(**str == '\'')
 		return(check_single_quotes(str));
 	else
 		return(before(str));
 }
 
+//typedef struct s_pare
+//{
+//	char *str1;
+//	char *str2;
+//}t_pare;
 
-void	lst_err_check(t_cnt *words, t_cnt *pipe, char **s)
+//t_pare pare2()
+//{
+//	return((t_pare){.str1 = "abc", .str2 = "dce"});
+//};
+
+char *output_red(char *str, t_all *all,t_red *red)
 {
-	if (*(skip_space(*s + 1)) == ';' || *(skip_space(*s + 1)) == '|')
+	str = skip_space(str + 1);
+	red->out_res = ft_strjoin(ft_itoa(1), parser_result(&str));
+	while (*str != '\0' && *str != ' ' && *str != ' '
+		   &&  *str != '|' &&  *str != '>' && *str != '<')
+		red->out_res = ft_strjoin(red->out_res, parser_result(&str));
+	ft_lstadd_back(&red->output, ft_lstnew((void *)red->out_res));
+	return(str);
+}
+
+char *input_red(char *str, t_all *all,t_red *red)
+{
+	int fd;
+
+	str = skip_space(++str);
+	red->input = parser_result(&str);
+	while (*str != '\0' && *str != ' ' && *str != ' '
+		&&  *str != '|' &&  *str != '>' && *str != '<')
 	{
-		*(*s + 1) = 0;
-		ft_lstclear(&words->lst, free);
-		words->count = 0;
-		ft_lstclear(&pipe->lst, free);
-		pipe->count = 0;
+		red->input = ft_strjoin(red->input, parser_result(&str));
+		fd = open(red->input, O_RDONLY);
+		if (fd <= 0)
+		{
+			red->err = 1;
+			while(*str != '\0' && *str != '|')
+				str++;
+		}
+		else
+			close(fd);
+	}
+	return(str);
+}
+
+char *output_red1(char *str, t_all *all, t_red *red)
+{
+	str = skip_space(str + 2);
+	red->out_res = ft_strjoin(ft_itoa(2), parser_result(&str));
+	while (*str != '\0' && *str != ' ' && *str != ' '
+		   &&  *str != '|' &&  *str != '>' && *str != '<')
+		red->out_res = ft_strjoin(red->out_res, parser_result(&str));
+	ft_lstadd_back(&red->output, ft_lstnew((void *)red->out_res));
+	return(str);
+}
+
+char *space_red(char *str, t_all *all,t_cnt *words)
+{
+	char *p;
+	int e;
+
+	str = skip_space(str);
+	while (*str != '\0'
+		   &&  *str != '|' &&  *str != '>' && *str != '<')
+	{
+		p = parser_result(&str);
+		while (*str != '\0' && *str != ' ' && *str != '|')
+			p = ft_strjoin(p, parser_result(&str));
+		list_count(words, p);
+		str = skip_space(str);
+	}
+	return(str);
+}
+void	parser_redirect(char **str, t_all *all, t_cnt	*words)
+{
+	t_red red;
+	char *s;
+
+	ft_bzero(&red, sizeof(red));
+	s = *str;
+	while(*s!= '\0' && *s != '|')
+	{
+		if (*s == '>' && *(s + 1) != '>')
+			s = output_red(s, all, &red);
+		if (*s == '>' && *(s + 1) == '>')
+			s = output_red1(s, all, &red);
+		if (*s == '<')
+			s = input_red(s, all, &red);
+		if (*s == ' ')
+			s = space_red(s, all, words);
+		s++;
+	}
+	allocate_mem(all, words);
+
+}
+void 		list_count(t_cnt *words, void *s)
+{
+	ft_lstadd_back(&words->list, ft_lstnew(s));
+	words->count++;
+}
+
+void allocate_mem(t_all *all, t_cnt *words)
+{
+	int j;
+	t_list *tmp;
+
+	tmp = words->list;
+	all->result = malloc(sizeof(char *) * (words->count + 1));
+	all->result[words->count] = NULL;
+	j = 0;
+	while (j < words->count)
+	{
+		all->result[j++] = tmp->content;
+		tmp = tmp->next;
 	}
 }
-
-void clear_lists_words_and_pipe(t_cnt *words, t_cnt *pipe)
+void	ft_cntlear(t_list **lst, void (*del_f)(void *))
 {
-	ft_lstclear(&words->lst, free);
-	words->count = 0;
-	ft_lstclear(&pipe->lst, free);
-	pipe->count = 0;
+	t_list	*temp_lst;
+	t_list	*to_del_node;
+
+	if ((!lst && !(*lst) && !del_f) || !lst || !(*lst) || !del_f)
+		return ;
+	temp_lst = *lst;
+	while (temp_lst)
+	{
+		if (temp_lst->content)
+			del_f(temp_lst->content);
+		to_del_node = temp_lst;
+		temp_lst = temp_lst->next;
+		free(to_del_node);
+	}
+	*lst = NULL;
 }
 
-void add_to_result(t_cnt *words, t_cnt *pipe, t_all *all, char **str)
+void	clear_lst(t_cnt *cnt)
 {
-	t_list *list;
-	int j;
-
+	ft_cntlear(&cnt->list, free);
+	cnt->count = 0;
+}
+void process(t_all *all, t_cnt *words, t_cnt *pipes, char **str)
+{
 	if (words->count != 0)
 	{
-		list = words->lst;
-		all->result = malloc(sizeof(char *) * (words->count + 1));
-		all->result[words->count] = NULL;
-		j = 0;
-		while (j < words->count)
-		{
-			all->result[j++] = list->content;
-			list = list->next;
-		}
-		if(**all->result)
-			lst_err_check(words, pipe, str);
-		ft_lstadd_back(&pipe->lst, ft_lstnew(all->result));
-		pipe->count++;
-		if (pipe->count == 1)
+		allocate_mem(all, words);
+		list_count(pipes, all->result);
+//		if(pipes->count == 1)
+		if (ft_strlen(all->result[0]) > 0)
 			find_command(all);
 	}
-	clear_lists_words_and_pipe(words, pipe);
+	clear_lst(words);
+	clear_lst(pipes);
 }
+
 
 t_all *parser(char *str, t_all *all)
 {
-	t_cnt words;
-	t_cnt pipe;
-	char *s;
+	t_cnt	words;
+	t_cnt	pipes;
+	int		count;
+	int		j;
+	//int		len;
+	char	*s;
 
+	count = 0;
 	ft_bzero(&words, sizeof(t_cnt));
-	ft_bzero(&pipe, sizeof(t_cnt));
+	ft_bzero(&pipes, sizeof(t_cnt));
 	while (*str != '\0')
 	{
 		str = skip_space(str);
 		check_sim(str);
+		if (*str == '<' || *str == '>')
+			parser_redirect(&str, all, &words);
 		s = parser_result(&str);
-		ft_lstadd_back(&words.lst, ft_lstnew(s));
-		words.count++;
+		list_count(&words, s);
+//		ft_lstadd_back(&words, ft_lstnew(s));
+//		count++;
 		str = skip_space(str);
-		if (*str == ';')
-		{
-			add_to_result(&words, &pipe, all, &str);
-			str++;
-		}
+//		if (*str == ';')
+//		{
+//			if (count != 0)
+//			{
+//				all->result = malloc(sizeof(char *) * (count + 1));
+//				all->result[count] = NULL;
+//				j = 0;
+//				while (j < count)
+//				{
+//					all->result[j++] = words->content;
+//					words = words->next;
+//				}
+//				if (ft_strlen(all->result[0]) > 0)
+//					find_command(all);
+//				ft_free_arr(all->result);
+//				count = 0;
+//				str++;
+//			}
+//		}
 	}
-	add_to_result(&words, &pipe, all, &str);
+	process(all, &words, &pipes, &str);
+//	if (count != 0)
+//	{
+//		all->result = malloc(sizeof(char *) * (count + 1));
+//		all->result[count] = NULL;
+//		j = 0;
+//		while (j < count) {
+//			all->result[j++] = words->content;
+//			words = words->next;
+//		}
+//		if (ft_strlen(all->result[0]) > 0)
+//			find_command(all);
+//		ft_free_arr(all->result);
+//	}
 	return (all);
 }
 
@@ -418,6 +570,16 @@ static void ft_init(t_parser *par)
 	par->buf = NULL;
 }
 
+void	canonical_input_on_with_exit(struct termios *term, int error)
+{
+	ft_putendl_fd("exit", 1);
+	tcgetattr(0, term);
+	term->c_lflag |= (ECHO);
+	term->c_lflag |= (ICANON);
+	tcsetattr(0, TCSANOW, term);
+	exit(error);
+}
+
 int main(int ac, char **av, char **env)
 {
 	char	str[500];
@@ -427,17 +589,25 @@ int main(int ac, char **av, char **env)
 	int				fd;
 	t_parser pars;
 
-	dup2(STDOUT_FILENO, 3);
-	dup2(STDIN_FILENO, 4);
-	signal(SIGQUIT, ft_quit);
-	signal(SIGINT, ft_sigint); //ctrl c
-	term = init();
-	fd = make_fd();
-	ft_init(&pars);
-	write(1, "Minishell>> ", 12);
+//	dup2(STDOUT_FILENO, 3);
+//	dup2(STDIN_FILENO, 4);
+//	signal(SIGQUIT, ft_quit);
+//	signal(SIGINT, ft_sigint); //ctrl c
+//	term = init();
+//	fd = make_fd();
 	all = (t_all *) ft_calloc(1, sizeof(t_all));
-	i = read(0, str, 1000);
-	str[i - 1] = '\0';
-	parser(str, all);
-	return 0;
+	if (ac > 1 && av[1] != NULL)
+		ft_putstr_fd("Invalid arguments\n", 1);
+	signal(SIGINT, signal_for_new_line);
+	signal(SIGQUIT, signal_exit_from_cat);
+	ft_init(&pars);
+	while (1)
+	{
+		write(1, "Minishell>> ", 12);
+//		tputs(save_cursor, 1, my_putchar);
+		i = read(0, str, 1000);
+		str[i - 1] = '\0';
+		parser(str, all);
+	}
+//	return 0;
 }

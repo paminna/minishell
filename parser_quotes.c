@@ -2,7 +2,7 @@
 
 char	check_spec_s(char c)
 {
-	if (c == '\"' || c == '\'' || c == '\\')
+	if (c == '\\' || c == '\"' || c == '\'')
 		return (c);
 	return (0);
 }
@@ -20,7 +20,7 @@ char *new_str_with_q(char **str, int cnt_quot)
 	n = 0;
 	while (i < cnt_quot)
 	{
-		if(save[n] == '\\' && (s[i] == '\\' && (s[i + 1] == '\\' || s[i + 1] == '\"' || s[i + 1] == '\'')))
+		if(save[n] == '\\' && check_spec_s(save[n + 1]))
 			s[i++] = check_spec_s(save[++n]);
 		if(save[n] != '\"')
 			s[i++] = save[n];
@@ -66,13 +66,14 @@ char *check_double_quotes(char **str)
 	{
 		if (s[i] != '\"')
 			cnt_quot++;
-		if (s[i] == '\\' && (s[i + 1] == '\\' || s[i + 1] == '\"' || s[i + 1] == '\''))
+		if (s[i] == '\\' && check_spec_s(s[i + 1]))
 			i++;
 		i++;
 	}
 	s = new_str_with_q(str, cnt_quot);
 	*str += i - cnt_quot;
-	*str += (**str != 0);
+	if (**str != 0)
+		*str++;
 	return (s);
 }
 

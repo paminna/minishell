@@ -196,6 +196,13 @@ t_list	*ft_lstnew(void *content)
 	return (list);
 }
 
+int	my_putchar(int c)
+{
+	int res;
+
+	res = write(1, &c, 1);
+	return(res);
+}
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -204,8 +211,7 @@ void	ft_putchar_fd(char c, int fd)
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*temp_lst;
-
+	t_list *temp_lst;
 	if (!new)
 		return ;
 	if (lst && *lst)

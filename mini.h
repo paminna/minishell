@@ -25,6 +25,7 @@
 // 	int squit;
 // } t_sign;
 
+
 typedef struct		s_list
 {
 	void			*content;
@@ -33,7 +34,7 @@ typedef struct		s_list
 
 typedef struct s_cnt
 {
-	t_list	*lst;
+	t_list	*list;
 	int		count;
 }				t_cnt;
 
@@ -43,6 +44,15 @@ typedef struct		s_list_env
 	char			*value;
 	char			*str;
 }					t_list_env;
+
+typedef struct s_red
+{
+	char **s;
+	char *input;
+	char *out_res;
+	t_list *output;
+	int err;
+}t_red;
 
 typedef struct s_all
 {
@@ -85,11 +95,16 @@ void	ft_putendl_fd(char *s, int fd);
 char	*ft_itoa(int nbr);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_lstclear(t_list **lst, void (*del_f)(void *));
-
+void 		list_count(t_cnt *words, void *s);
 char	check_spec_s(char c);
 char *new_str_with_q(char **str, int cnt_quot);
 char *new_str_with_s_q(char **str, int cnt_quot);
 char *check_double_quotes(char **str);
 char *check_single_quotes(char **str);
+void allocate_mem(t_all *all, t_cnt *words);
+int	my_putchar(int c);
+
+void	signal_exit_from_cat(int sig);
+void	signal_for_new_line(int sig);
 
 #endif
