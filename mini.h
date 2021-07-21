@@ -42,8 +42,16 @@ typedef struct		s_list_env
 {
 	char			*key;
 	char			*value;
-	char			*str;
+	struct s_list_env	*next;
+	struct s_list_env	*previous;
+	char *str;
 }					t_list_env;
+
+typedef struct s_env
+{
+	char *key;
+	char *val;
+}t_env;
 
 typedef struct s_red
 {
@@ -57,9 +65,11 @@ typedef struct s_red
 typedef struct s_all
 {
 	char		**result; // запись команд[0]
+	t_list_env  *env;
 	int			i;
-	char		**env;
+//	char		**env;
 	char		str;
+	struct termios	term;
 }	t_all;
 
 typedef	struct	s_parser
@@ -103,6 +113,7 @@ char *check_double_quotes(char **str);
 char *check_single_quotes(char **str);
 void allocate_mem(t_all *all, t_cnt *words);
 int	my_putchar(int c);
+char	*ft_substr(char const *str, unsigned int start, size_t len);
 
 void	signal_exit_from_cat(int sig);
 void	signal_for_new_line(int sig);

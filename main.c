@@ -157,9 +157,16 @@ void find_command(t_all *all)
 		parser_echo(all->result);
 	else if (!ft_strncmp(all->result[0], "export", 7))
 		parser_export(all->result);
+//	else if (!ft_strncmp(all->result[0], "cd", 3))
+//		parser_cd(all->result);
+//	else if (!ft_strncmp(all->result[0], "pwd", 4))
+//		parser_pwd(all->result);
+//	else if (!ft_strncmp(all->result[0], "unset", 6))
+//		parser_unset(all->result);
+//	else if (!ft_strncmp(all->result[0], "env", 4))
+//		parser_env(all->result);
 	else if (!ft_strncmp(all->result[0], "exit", 5))
 		my_exit(all->result);
-
 //	else
 //		write(2, "Minishell>> ", 12);
 
@@ -270,13 +277,19 @@ void	check_sim(char *str)
 		}
 	}
 }
+//char *check_env(char **str)
+//{
+//
+//}
 
 char *parser_result(char **str)
 {
 	if(**str == '\"')
 		return(check_double_quotes(str));
-	if(**str == '\'')
+	else if(**str == '\'')
 		return(check_single_quotes(str));
+//	else if (**str == '$')
+//		return(check_env(str));
 	else
 		return(before(str));
 }
@@ -435,7 +448,20 @@ void process(t_all *all, t_cnt *words, t_cnt *pipes, char **str)
 	clear_lst(pipes);
 }
 
+void clear_list_w(t_cnt *words)
+{
+	t_list	*tmp;
 
+	tmp = words->list;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		free(words->list);
+		words->list = tmp;
+	}
+	words->list = NULL;
+	words->count = 0;
+}
 t_all *parser(char *str, t_all *all)
 {
 	t_cnt	words;
@@ -459,6 +485,19 @@ t_all *parser(char *str, t_all *all)
 //		ft_lstadd_back(&words, ft_lstnew(s));
 //		count++;
 		str = skip_space(str);
+		if (*str == '|')
+		{
+			if (words.count > 0)
+			{
+				allocate_mem(all, &words);
+				if (all->result)
+					list_count(&pipes, all->result);
+//				else
+//					error
+				clear_list_w(&words);
+				str++;
+			}
+		}
 //		if (*str == ';')
 //		{
 //			if (count != 0)
@@ -580,6 +619,72 @@ void	canonical_input_on_with_exit(struct termios *term, int error)
 	exit(error);
 }
 
+t_list_env	*get_val_ket(char *key,char *val)
+{
+	t_list_env *list;
+
+	list = (t_list_env *)malloc(sizeof(t_list_env));
+	if(!list)
+		return(NULL);
+	list->key = key;
+	list->value = val;
+	list->next = NULL;
+	list->previous = NULL;
+	return (list);
+
+}
+
+int create_new_env(t_list_env **list, t_list_env *new)
+{
+	t_list_env *tmp;
+
+	if (!list || !new)
+		return (1);
+	if (*list)
+	{
+		tmp = *list;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+		new->previous = tmp;
+	}
+	else
+		*list = new;
+	return (0);
+}
+
+int ft_len(char **env, int n)
+{
+	while (env[n] != '\0' && env[n] != '=')
+			n++;
+	return (n);
+}
+
+void	init_env(t_all *all, char **env)
+{
+	int i;
+	int n;
+	t_env *get_env;
+
+	i = 0;
+	get_env = (t_env *) ft_calloc(1, sizeof(t_env));
+	while (env[i] != NULL)
+	{
+		n = 0;
+		n = ft_len(&env[i], 0);
+		get_env->key = ft_substr(env[i], 0, n);
+		if (env[i][n] == '=')
+		{
+			n++;
+			get_env->val = ft_substr(env[i], n, ft_strlen(&env[i][n]));
+		}
+		else
+			get_env->val = NULL;
+		create_new_env(&all->env, get_val_ket(get_env->key, get_env->val));
+		i++;
+	}
+}
+
 int main(int ac, char **av, char **env)
 {
 	char	str[500];
@@ -596,6 +701,7 @@ int main(int ac, char **av, char **env)
 //	term = init();
 //	fd = make_fd();
 	all = (t_all *) ft_calloc(1, sizeof(t_all));
+	init_env(all, env);
 	if (ac > 1 && av[1] != NULL)
 		ft_putstr_fd("Invalid arguments\n", 1);
 	signal(SIGINT, signal_for_new_line);
@@ -604,7 +710,7 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		write(1, "Minishell>> ", 12);
-//		tputs(save_cursor, 1, my_putchar);
+		//tputs(save_cursor, 1, my_putchar);
 		i = read(0, str, 1000);
 		str[i - 1] = '\0';
 		parser(str, all);
