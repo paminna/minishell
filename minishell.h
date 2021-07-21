@@ -3,6 +3,8 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <string.h>
 #include "libft/libft.h"
 
 typedef	struct	s_all

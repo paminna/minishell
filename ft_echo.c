@@ -10,6 +10,25 @@ void	ft_errors(char *str)
 		write(1, &str[i++], 1);
 }
 
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n && (str1[i] != '\0' || str2[i] != '\0'))
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (0);
+}
+
+
 // void	ft_echo(char *str, int flag)
 // {
 // 	int i;
@@ -175,25 +194,25 @@ void	ft_copy_env(char **env, t_env *env_struct)
 // 	}
 // }
 
-// void	ft_out_env(t_env *env_struct)
-// {
-// 	int i;
-// 	int j;
+void	ft_out_env(char *str, t_env *env_struct)
+{
+	int i;
+	int j;
 
-// 	i = 0;
-// 	j = 0;
-// 	while (i < env_struct->count_lines)
-// 	{
-// 		while (env_struct->env[i][j])
-// 		{
-// 			write(1, &env_struct->env[i][j], 1);
-// 			j++;
-// 		}
-// 		write(1, "\n", 1);
-// 		j = 0;
-// 		i++;
-// 	}
-// }
+	i = 0;
+	j = 0;
+	while (i < env_struct->count_lines)
+	{
+		while (env_struct->env[i][j])
+		{
+			write(1, &env_struct->env[i][j], 1);
+			j++;
+		}
+		write(1, "\n", 1);
+		j = 0;
+		i++;
+	}
+}
 
 
 // void	ft_out_exp(t_env *env_struct)
@@ -241,6 +260,7 @@ char	*ft_strdup(const char *s1)
 	buffer[i] = '\0';
 	return (buffer);
 }
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -250,8 +270,6 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-
 
 void	ft_init_flags(t_env *env_struct)
 {
@@ -359,23 +377,56 @@ void	ft_unset(t_env *env_struct)
 	}
 }
 
-void	ft_cd(t_env *env_struct)
+void	ft_check_name(char *str, char **rewrite_name)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_strncmp(str, "PWD", 3))
+			rewrite_name = &str;
+		else if (ft_strncmp(str, "OLD_PWD", 7))
+			rewrite_name = &str;
+		i++;
+	}
+}
+
+char	*ft_cd(t_env *env_struct)
 {
 	int i;
 	int j;
-	int k;
 
 	j = 0;
-	k = 0;
 	i = 0;
 	env_struct->old_dir = getcwd(NULL, 1000);
 	if (chdir(env_struct->new_dir) < 0)
-		// прописать errno strerror
-	while (env_struct->env[i][j] != 'O' || env_struct->env[i][j] != 'P')
-		i++;
-	if (env_struct->env[i][j] != 'O')
+		return(strerror(errno));
+	env_struct->new_dir = getcwd(NULL, 1000);
+	while (i != env_struct->count_lines && env_struct->env[i][j])
 	{
-		while (env_struct->env[i][j])
+		if (env_struct->env[i][j] == 'O')
+			ft_check_name(env_struct->env[i], &env_struct->old_dir);
+		else if (env_struct->env[i][j] == 'P')
+			ft_check_name(env_struct->env[i], &env_struct->new_dir);
+		i++;
+	}
+	return (NULL);
+}
+
+void	ft_grep(char **res, char *str)
+{
+	int i;
+	int j;
+	
+	i = 0;
+	j = 0;
+	while (res[i])
+	{
+		while (res[i][j])
+		{
+			
+		}
 	}
 }
 
@@ -403,13 +454,14 @@ int main(int argc, char **argv, char **env)
 	// all->result[3] = (char*)malloc(4);
 	// all->result[4] = (char)malloc(4);
 	// all->result[4] = "XPC_FLAGS";
+	all->result[5] = "e";
 	// all->flag = 0;
 	// if (ft_strncmp(all->result[0], "echo", 3) == 0)
 	// 	ft_echo(all->result[0], all->flag);
 	// if (ft_strncmp(all->result[1], "pwd", 3) == 0)
 	// 	ft_pwd();
 	// if (ft_strncmp(all->result[2], "env", 3) == 0)
-	// 	ft_out_env(all->result[2], &env_struct);
+		// ft_out_env("env", &env_struct);
 	// if (ft_strncmp(all->result[3], "exp", 3) == 0)
 		// ft_out_exp(&env_struct);
 	// if (ft_strncmp(all->result[4], "XPC_FLAGS", 3) == 0)
@@ -425,6 +477,12 @@ int main(int argc, char **argv, char **env)
 	// env_struct.unset[9] = 'R';
 	// env_struct.unset[10] = 'A';
 	// env_struct.unset[11] = 'M';
-	ft_unset(&env_struct);
-	ft_cd(&env_struct);
+	// ft_unset(&env_struct);
+	// env_struct.new_dir = "..";
+	// if (ft_cd(&env_struct))
+	// 	ft_errors(ft_cd(&env_struct));
+	// else 
+	// 	printf("succeed\n");
+	ft_grep(env_struct.env, all->result[5]);
+	// ft_exit();
 }

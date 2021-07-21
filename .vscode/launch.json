@@ -11,7 +11,7 @@
 			"program": "${workspaceFolder}/a.out",
 			"args": [],
 			"stopAtEntry": true,
-			"cwd": "${workspaceFolder}",
+			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb"
