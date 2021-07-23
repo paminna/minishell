@@ -70,6 +70,7 @@ typedef struct s_all
 //	char		**env;
 	char		str;
 	struct termios	term;
+	int			pipe_f;
 }	t_all;
 
 typedef	struct	s_parser
@@ -117,5 +118,6 @@ char	*ft_substr(char const *str, unsigned int start, size_t len);
 
 void	signal_exit_from_cat(int sig);
 void	signal_for_new_line(int sig);
+void	ft_cntlear(t_list **lst, void (*del_f)(void *));
 
 #endif

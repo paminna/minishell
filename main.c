@@ -1,6 +1,7 @@
 #include "mini.h"
 #include <curses.h>
 #include <term.h>
+
 void	parser_echo(char **massiv)
 {
 	int	flag;
@@ -130,7 +131,7 @@ void	parser_export2(char *massiv)
 		write(2,"\'", 1);
 		ft_putstr_fd(struct_export.value, 2); //TODO + очищение памяти
 		write(2,"\'", 1);
-		write(2,": not a valid identifier", 24);
+		write(2,": not a valid identifier\n", 26);
 		return ;
 	}
 //	if (sm == 0)
@@ -167,8 +168,8 @@ void find_command(t_all *all)
 //		parser_env(all->result);
 	else if (!ft_strncmp(all->result[0], "exit", 5))
 		my_exit(all->result);
-//	else
-//		write(2, "Minishell>> ", 12);
+	// else
+	// 	write(2, "Minishell>> ", 12);
 
 }
 
@@ -207,7 +208,7 @@ char	*before(char **str)
 	s = *str;
 	count = 0;
 	i = 0;
-	while (s[i] && s[i] != ' ' && s[i] != ';' && s[i] != '\"' && s[i] != '\'' \
+	while (s[i] && s[i] != ' ' && s[i] != '\"' && s[i] != '\'' \
 				&& s[i] != '$' && s[i] != '>' && s[i] != '<' && s[i] != '|')
 	{
 		count++;
@@ -240,21 +241,21 @@ void	check_sim(char *str)
 	int i;
 
 	i = 0;
-	if ((*str == ';' || *str == '|' || *str == '&' || *str == ')'
+	if ((*str == '|' || *str == '&' || *str == ')'
 		 || *str == '<' || *str == '>') && str[++i] == '\0')
 	{
 		write(2, "Minishell>> ", 12);
 		write(2,"syntax error near unexpected token ", 35);
 		write(2,"\'", 1);
 		ft_putstr_fd(str, 2); //TODO + очищение памяти
-		write(2,"\'", 1);
+		write(2,"\'\n", 3);
 		return ;
 	}
 	if (*str == '%')
 	{
 		write(2, "Minishell>> ", 12);
 		ft_putstr_fd(str, 2);
-		write(2,": no such job", 13);
+		write(2,": no such job\n", 15);
 		return ;
 	}
 	if (*str == '^')
@@ -264,7 +265,7 @@ void	check_sim(char *str)
 			write(2, "Minishell>> ", 12);
 			write(2,":s", 2);
 			ft_putstr_fd(str, 2);
-			write(2,": substitution failed", 21);
+			write(2,": substitution failed\n", 22);
 			return ;
 		}
 		else
@@ -272,15 +273,16 @@ void	check_sim(char *str)
 			write(2, "Minishell>> ", 12);
 			write(2,":s", 2);
 			ft_putstr_fd(str, 2);
-			write(2,": no previous substitution", 26);
+			write(2,": no previous substitution\n", 27);
 			return ;
 		}
 	}
 }
-//char *check_env(char **str)
-//{
-//
-//}
+
+// char *check_env(char **str)
+// {
+
+// }
 
 char *parser_result(char **str)
 {
@@ -288,8 +290,8 @@ char *parser_result(char **str)
 		return(check_double_quotes(str));
 	else if(**str == '\'')
 		return(check_single_quotes(str));
-//	else if (**str == '$')
-//		return(check_env(str));
+	// else if (**str == '$')
+	// 	return(check_env(str));
 	else
 		return(before(str));
 }
@@ -305,7 +307,7 @@ char *parser_result(char **str)
 //	return((t_pare){.str1 = "abc", .str2 = "dce"});
 //};
 
-char *output_red(char *str, t_all *all,t_red *red)
+char *output_red(char *str, t_red *red)
 {
 	str = skip_space(str + 1);
 	red->out_res = ft_strjoin(ft_itoa(1), parser_result(&str));
@@ -327,7 +329,7 @@ char *input_red(char *str, t_all *all,t_red *red)
 	{
 		red->input = ft_strjoin(red->input, parser_result(&str));
 		fd = open(red->input, O_RDONLY);
-		if (fd <= 0)
+		if (fd < 0)
 		{
 			red->err = 1;
 			while(*str != '\0' && *str != '|')
@@ -339,7 +341,7 @@ char *input_red(char *str, t_all *all,t_red *red)
 	return(str);
 }
 
-char *output_red1(char *str, t_all *all, t_red *red)
+char *output_red1(char *str, t_red *red)
 {
 	str = skip_space(str + 2);
 	red->out_res = ft_strjoin(ft_itoa(2), parser_result(&str));
@@ -350,7 +352,7 @@ char *output_red1(char *str, t_all *all, t_red *red)
 	return(str);
 }
 
-char *space_red(char *str, t_all *all,t_cnt *words)
+char *space_red(char *str, t_cnt *words)
 {
 	char *p;
 	int e;
@@ -367,6 +369,102 @@ char *space_red(char *str, t_all *all,t_cnt *words)
 	}
 	return(str);
 }
+void  redirect_output(t_list *output, t_all *all, int error)
+{
+	char *str;
+	int n_fd;
+	t_red *red;
+	int pid;
+	int fd_for_input;
+	int fd_for_output;
+	char *n;
+
+	pid = 0;
+	if (error)
+	{
+		if (output)
+		{
+			str = output->content;
+			n_fd = open(++str, O_CREAT | O_TRUNC, S_IWRITE | S_IREAD);
+			if (n_fd < 0)
+				exit(1);
+			close(n_fd);
+		}
+		ft_putstr_fd(red->input, 2);
+		write(1, ": No such file or directory\n", 28);
+	}
+	while (output && output->next)
+	{
+		str = output->content;
+		n_fd = open(++str, O_CREAT | O_TRUNC, S_IWRITE | S_IREAD);
+		if (n_fd < 0)
+			exit(1);
+		close(n_fd);
+		output = output->next;
+	}
+	if (!error)
+	{
+		pid = fork();
+		if (pid > 0)
+			wait(NULL);
+		else if (pid == 0)
+		{
+			all->pipe_f = 1;
+			if (red->input)
+			{
+				fd_for_input = open(red->input, O_RDONLY);
+				if(fd_for_input < 0)
+					exit(1);
+				close(fd_for_input);
+			}
+			else if (output)
+			{
+				n = (char *)output->content;
+				if (n[0] == '1')
+				{
+					fd_for_output = open(++n, O_RDWR | O_CREAT | O_TRUNC, 0644);
+					if (fd_for_output < 0)
+						exit(1);
+				}
+				else if (n[0] == '2')
+				{
+					fd_for_output = open(++n, O_RDWR | O_CREAT | O_TRUNC, 0666);
+					if (fd_for_output < 0)
+						exit(1);
+				}
+				dup2(fd_for_output, 1);
+				close(fd_for_output);
+			}
+			find_command(all);
+		}
+	}
+
+}
+
+// void	ft_cntlear(t_list **lst, void (*del_f)(void *))
+// {
+// 	t_list	*temp_lst;
+// 	t_list	*to_del_node;
+
+// 	if ((!lst && !(*lst) && !del_f) || !lst || !(*lst) || !del_f)
+// 		return ;
+// 	temp_lst = *lst;
+// 	while (temp_lst)
+// 	{
+// 		if (temp_lst->content)
+// 			del_f(temp_lst->content);
+// 		to_del_node = temp_lst;
+// 		temp_lst = temp_lst->next;
+// 		free(to_del_node);
+// 	}
+// 	*lst = NULL;
+// }
+
+void	clear_list(t_cnt *cnt)
+{
+	ft_cntlear(&cnt->list, free);
+	cnt->count = 0;
+}
 void	parser_redirect(char **str, t_all *all, t_cnt	*words)
 {
 	t_red red;
@@ -374,20 +472,24 @@ void	parser_redirect(char **str, t_all *all, t_cnt	*words)
 
 	ft_bzero(&red, sizeof(red));
 	s = *str;
-	while(*s!= '\0' && *s != '|')
+	while(*s!= '\0')
 	{
 		if (*s == '>' && *(s + 1) != '>')
-			s = output_red(s, all, &red);
-		if (*s == '>' && *(s + 1) == '>')
-			s = output_red1(s, all, &red);
-		if (*s == '<')
+			s = output_red(s, &red);
+		else if (*s == '>' && *(s + 1) == '>')
+			s = output_red1(s, &red);
+		else if (*s == '<')
 			s = input_red(s, all, &red);
-		if (*s == ' ')
-			s = space_red(s, all, words);
-		s++;
+		else if (*s == ' ')
+			s = space_red(s, words);
+		 s++;
 	}
 	allocate_mem(all, words);
-
+	redirect_output(red.output, all, red.err);
+	if (*s == '|')
+		s++;
+	s = skip_space(s);
+	clear_list(words);
 }
 void 		list_count(t_cnt *words, void *s)
 {
@@ -440,8 +542,8 @@ void process(t_all *all, t_cnt *words, t_cnt *pipes, char **str)
 	{
 		allocate_mem(all, words);
 		list_count(pipes, all->result);
-//		if(pipes->count == 1)
-		if (ft_strlen(all->result[0]) > 0)
+		if(pipes->count == 1)
+		// if (ft_strlen(all->result[0]) > 0)
 			find_command(all);
 	}
 	clear_lst(words);
@@ -498,40 +600,8 @@ t_all *parser(char *str, t_all *all)
 				str++;
 			}
 		}
-//		if (*str == ';')
-//		{
-//			if (count != 0)
-//			{
-//				all->result = malloc(sizeof(char *) * (count + 1));
-//				all->result[count] = NULL;
-//				j = 0;
-//				while (j < count)
-//				{
-//					all->result[j++] = words->content;
-//					words = words->next;
-//				}
-//				if (ft_strlen(all->result[0]) > 0)
-//					find_command(all);
-//				ft_free_arr(all->result);
-//				count = 0;
-//				str++;
-//			}
-//		}
 	}
 	process(all, &words, &pipes, &str);
-//	if (count != 0)
-//	{
-//		all->result = malloc(sizeof(char *) * (count + 1));
-//		all->result[count] = NULL;
-//		j = 0;
-//		while (j < count) {
-//			all->result[j++] = words->content;
-//			words = words->next;
-//		}
-//		if (ft_strlen(all->result[0]) > 0)
-//			find_command(all);
-//		ft_free_arr(all->result);
-//	}
 	return (all);
 }
 
@@ -609,15 +679,15 @@ static void ft_init(t_parser *par)
 	par->buf = NULL;
 }
 
-void	canonical_input_on_with_exit(struct termios *term, int error)
-{
-	ft_putendl_fd("exit", 1);
-	tcgetattr(0, term);
-	term->c_lflag |= (ECHO);
-	term->c_lflag |= (ICANON);
-	tcsetattr(0, TCSANOW, term);
-	exit(error);
-}
+//void	canonical_input_on_with_exit(struct termios *term, int error)
+//{
+//	ft_putendl_fd("exit", 1);
+//	tcgetattr(0, term);
+//	term->c_lflag |= (ECHO);
+//	term->c_lflag |= (ICANON);
+//	tcsetattr(0, TCSANOW, term);
+//	exit(error);
+//}
 
 t_list_env	*get_val_ket(char *key,char *val)
 {
@@ -690,8 +760,8 @@ int main(int ac, char **av, char **env)
 	char	str[500];
 	int		i;
 	t_all	*all;
-	struct termios	term;
-	int				fd;
+	// struct termios	term;
+	// int				fd;
 	t_parser pars;
 
 //	dup2(STDOUT_FILENO, 3);

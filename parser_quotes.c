@@ -72,8 +72,7 @@ char *check_double_quotes(char **str)
 	}
 	s = new_str_with_q(str, cnt_quot);
 	*str += i - cnt_quot;
-	if (**str != 0)
-		*str++;
+	*str += (**str != 0);
 	return (s);
 }
 
