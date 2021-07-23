@@ -1,5 +1,6 @@
 #include "minishell.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 void	ft_errors(char *str)
 {
@@ -276,6 +277,10 @@ void	ft_init_flags(t_env *env_struct)
 	env_struct->flags.empty_val = 0;
 	env_struct->flags.new_key = 0;
 	env_struct->flags.let_unset = 0;
+	env_struct->flags.redir_b = 0;
+	env_struct->flags.redir2_b = 0;
+	env_struct->flags.redir_m = 0;
+	env_struct->flags.redir2_m = 0;
 }
 
 void	ft_check_unset_env(t_env *env_struct)
@@ -411,22 +416,95 @@ char	*ft_cd(t_env *env_struct)
 			ft_check_name(env_struct->env[i], &env_struct->new_dir);
 		i++;
 	}
+	i = 0;
+	while (i != env_struct->count_lines && env_struct->exp[i][j])
+	{
+		if (env_struct->exp[i][j] == 'O')
+			ft_check_name(env_struct->exp[i], &env_struct->old_dir);
+		else if (env_struct->exp[i][j] == 'P')
+			ft_check_name(env_struct->exp[i], &env_struct->new_dir);
+		i++;
+	}
+	// добавить возможность создания этих переменных если они были удалены
 	return (NULL);
 }
 
-void	ft_grep(char **res, char *str)
+void	ft_exit(char *str, int code)
 {
-	int i;
-	int j;
-	
+	if (!ft_strncmp(str, "exit", 4))
+		exit(code);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*new;
+	int		i;
+	int		j;
+
 	i = 0;
 	j = 0;
-	while (res[i])
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	new = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (new == NULL)
+		return (NULL);
+	while (s1[i])
+		new[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		new[j++] = s2[i++];
+	new[j] = '\0';
+	return (new);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t i;
+
+	i = 0;
+	if (src == NULL)
+		return (0);
+	if (dstsize > 0)
 	{
-		while (res[i][j])
+		while (src[i] && (dstsize - i - 1))
 		{
-			
+			dst[i] = src[i];
+			i++;
 		}
+		dst[i] = '\0';
+	}
+	while (src[i])
+		i++;
+	return (i);
+}
+
+void	ft_redir(char *str, t_env *env_struct)
+{
+	FILE 	*fp;
+	char 	*cp;
+	int		len;
+	int 	file;
+	int		fd[2];
+
+
+	len = ft_strlen(str);
+	cp = (char*)malloc(len + 4);
+	cp = ft_strjoin(str,".txt");
+	if (env_struct->flags.redir2_b == 1)
+	{
+		file = open(cp, O_WRONLY | O_APPEND | O_CREAT, 0666);
+		if (file < 0)
+			ft_errors("error");
+		dup2(file, fd[1]);
+		close(file);
+	}
+	else if (env_struct->flags.redir_b == 1)
+	{
+		file = open(cp, O_CREAT | O_WRONLY | O_TRUNC, 0666);
+		if (file < 0)
+			ft_errors("error");
+		dup2(file, fd[1]);
+		close(file);
 	}
 }
 
@@ -454,7 +532,6 @@ int main(int argc, char **argv, char **env)
 	// all->result[3] = (char*)malloc(4);
 	// all->result[4] = (char)malloc(4);
 	// all->result[4] = "XPC_FLAGS";
-	all->result[5] = "e";
 	// all->flag = 0;
 	// if (ft_strncmp(all->result[0], "echo", 3) == 0)
 	// 	ft_echo(all->result[0], all->flag);
@@ -483,6 +560,7 @@ int main(int argc, char **argv, char **env)
 	// 	ft_errors(ft_cd(&env_struct));
 	// else 
 	// 	printf("succeed\n");
-	ft_grep(env_struct.env, all->result[5]);
-	// ft_exit();
+	// ft_exit(all->result[6], env_struct.code);
+	env_struct.flags.redir_b = 1;
+	ft_redir("hello", &env_struct);
 }

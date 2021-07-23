@@ -20,6 +20,10 @@ typedef	struct	s_flags
 	int			new_key;
 	int			empty_val;
 	int			let_unset;
+	int			redir_b;
+	int			redir_m;
+	int			redir2_m;
+	int			redir2_b;
 }				t_flags;
 
 typedef struct	s_env
@@ -34,6 +38,7 @@ typedef struct	s_env
 	int			max_len;
 	int			count_lines;
 	int			len_key_unset;
+	int			code;
 	// char		**env_copy;
 	t_flags		flags;
 }				t_env;
@@ -45,6 +50,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 
 #endif
