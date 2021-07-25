@@ -1,4 +1,4 @@
-SRCS = main.c ft_builtins.c ft_init.c ft_redirs.c get_next_line.c
+SRCS = main.c ft_builtins.c ft_init.c ft_redirs.c get_next_line.c ft_builtins_utils.c
 
 OBJS		=	${SRCS:.c=.o}
 

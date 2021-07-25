@@ -64,10 +64,16 @@ void	ft_unset(t_env *env_struct);
 char	*ft_cd(t_env *env_struct);
 void	ft_exit(char *str, int code);
 void	ft_copy_env(char **env, t_env *env_struct);
+void	ft_copy_exp(char **env, t_env *env_struct);
 void	ft_out_env(t_env *env_struct);
+void	ft_out_exp(t_env *env_struct);
 void	ft_check_name(char *str, char **rewrite_name);
 void	ft_check_unset_env(t_env *env_struct);
-void	ft_out_exp(t_env *env_struct);
+int		ft_strcmp(const char *s1, const char *s2);
+void	ft_sort_exp(t_env *env_struct);
+void	ft_check_all_keys(t_env *env_struct);
+void	ft_check_key_val(t_env *env_struct);
+void	ft_check_exports(t_env *env_struct, char **env);
 
 //utils
 void	ft_init_flags(t_env *env_struct, t_all *all);
