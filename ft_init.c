@@ -21,3 +21,4 @@ void	ft_init_flags(t_env *env_struct, t_all *all)
 		i++;
 	}
 }
+// just for commit 

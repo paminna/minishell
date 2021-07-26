@@ -124,3 +124,5 @@ void	ft_exit(char *str, int code)
 	if (!ft_strncmp(str, "exit", 4))
 		exit(code);
 }
+
+// just for commit 
