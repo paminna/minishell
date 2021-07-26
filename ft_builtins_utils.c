@@ -144,7 +144,6 @@ void	ft_copy_exp(char **env, t_env *env_struct)
 		i++;
 	env_struct->count_lines = i;
 	i = 0;
-	printf("ft_copy_exp\n");
 	ft_check_exports(env_struct, env);
 	ft_sort_exp(env_struct);
 	while (i < env_struct->count_lines)
@@ -154,7 +153,7 @@ void	ft_copy_exp(char **env, t_env *env_struct)
 	}
 }
 
-void	ft_out_env(t_env *env_struct)
+void	ft_out(t_env *env_struct)
 {
 	int i;
 	int j;
@@ -212,14 +211,14 @@ void	ft_out_exp(t_env *env_struct)
 	}
 }
 
-void	ft_check_unset_env(t_env *env_struct)
+void	ft_check_unset(t_env *env_struct)
 {
 	int i;
 	int	j;
 	int k;
 
 	j = 0;
-	env_struct->len_key_unset= 0;
+	env_struct->len_key_unset= 0; // перенести в инициализатор
 	i = 0;
 	k = 0;
 	while (env_struct->unset[i] != '\0')
@@ -231,9 +230,7 @@ void	ft_check_unset_env(t_env *env_struct)
 	}
 	i = 0;
 	while (env_struct->unset[k] != env_struct->env[i][j])  //идем по первым символам ключа ищем одинаковые
-	{
 		i++;
-	}
 	while (env_struct->env[i])
 	{
 		k = 0;
@@ -242,10 +239,10 @@ void	ft_check_unset_env(t_env *env_struct)
 		{
 			k++;
 			j++;
-			if (k == env_struct->len_key_unset && env_struct->env[i][j] == '=') //дошли до конца ключа и смотрим что след. символ в матрице =
+			if (k == env_struct->len_key_unset - 1 && env_struct->env[i][j] == '=') //дошли до конца ключа и смотрим что след. символ в матрице =
 			{
 				env_struct->flags.let_unset = 1;
-				// env_struct->count_lines -= 1;
+				env_struct->count_lines -= 1;
 			}
 		}
 		i++;

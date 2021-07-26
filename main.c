@@ -25,7 +25,7 @@ void	ft_is_builtin(t_all *all, t_env *env_struct)
 		else if (ft_strncmp(all->result[i], "export", ft_strlen(all->result[i])) == 0)
 			ft_out_exp(env_struct);
 		else if (ft_strncmp(all->result[i], "unset", ft_strlen(all->result[i])) == 0)
-			ft_unset(env_struct);
+			ft_unset_env(env_struct);
 		else if (ft_strncmp(all->result[i], "exit", ft_strlen(all->result[i])) == 0)
 			ft_exit(all->result[i], env_struct->code);
 		else if (ft_strncmp(all->result[i], "cd", ft_strlen(all->result[i])) == 0)
@@ -64,9 +64,8 @@ int main(int argc, char **argv, char **env)
 	// t_all all;
 	t_env env_struct;
 
-	// env_struct.key = "name";
-	// env_struct.value = "=";
 	env_struct.key = "name";
+	// env_struct.value = "=";
 	// env_struct.value = "=value";
 	// all.result[3] = (char*)malloc(5);
 	// all.result[3] = "exp";
@@ -96,12 +95,12 @@ int main(int argc, char **argv, char **env)
 	// if (ft_strncmp(all->result[2], "env", ft_stlren(all->result[2])) == 0)
 		// ft_out_env(&env_struct);
 	// if (ft_strncmp(all.result[3], "exp", ft_strlen(all.result[3])) == 0)
-		ft_out_exp(&env_struct);
+		// ft_out_exp(&env_struct);
 	// if (ft_strncmp(all->result[4], "XPC_FLAGS", ft_stlren(all->result[4])) == 0)
-	// env_struct.unset[0] = 'T';
-	// env_struct.unset[1] = 'E';
-	// env_struct.unset[2] = 'R';
-	// env_struct.unset[3] = 'M';
+	env_struct.unset[0] = 'L';
+	env_struct.unset[1] = 'E';
+	env_struct.unset[2] = 'S';
+	env_struct.unset[3] = 'S';
 	// env_struct.unset[4] = '_';
 	// env_struct.unset[5] = 'P';
 	// env_struct.unset[6] = 'R';
@@ -110,7 +109,7 @@ int main(int argc, char **argv, char **env)
 	// env_struct.unset[9] = 'R';
 	// env_struct.unset[10] = 'A';
 	// env_struct.unset[11] = 'M';
-	// ft_unset(&env_struct);
+	ft_unset_env(&env_struct);
 	// env_struct.new_dir = "..";
 	// if (ft_cd(&env_struct))
 	// 	ft_errors(ft_cd(&env_struct));

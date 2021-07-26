@@ -28,63 +28,65 @@ void	ft_pwd()
 	free(pwd);
 }
 
+// void	ft_delete_equality_and_out(t_env *env_struct)
+// {
+// 	int i;
+// 	int j;
+
+// 	i = 0;
+// 	j = 0;
+// 	while (env_struct->env[i])
+// 	{
+// 		if (env_struct->env[i][j] == '=')
+// 		{
+// 			while (env_struct->env[i][j])
+// 				j++;
+// 		}
+// 	}
+// }
+
+
+// ft_unset()
+// {
+// 	while (i != env_struct->count_lines)
+// 		{
+// 			while (env_struct->env[i][j])
+// 			{
+// 				c = j;
+// 				if (env_struct->unset[k] == env_struct->env[i][c])	
+// 					while (env_struct->unset[k] == env_struct->env[i][c])
+// 					{
+// 						k++;
+// 						c++;
+// 					}
+// 				if (c == env_struct->len_key_unset - 1)
+// 					j = c;
+// 				// write(1, &env_struct->env[i][j], 1);
+// 				j++;
+// 			}
+// 			// write(1, "\n", 1);
+// 			j = 0;
+// 			k = 0;
+// 			i++;
+// 		}
+// }
+
 void	ft_unset(t_env *env_struct)
 {
 	int i;
 	int j;
-	int k;
-	int c;
 
-	c = 0;
-	k = 0;
 	i = 0;
 	j = 0;
-	ft_check_unset_env(env_struct);
+	ft_check_unset(env_struct);
 	if (env_struct->flags.let_unset)
 	{
-		while (env_struct->unset[k] != env_struct->env[i][j])
-		{
-			while (env_struct->env[i][j])
-			{
-				write(1, &env_struct->env[i][j], 1);
-				j++;
-			}
-			j = 0;
-			write(1, "\n", 1);
-			i++;
-		}
-		c = i;
-		while (env_struct->env[c])
-		{
-			while (env_struct->unset[k] == env_struct->env[c][j])
-			{	
-				k++;
-				j++;
-			}
-			if (!(env_struct->env[c][j] == '=' && k == env_struct->len_key_unset))
-			{
-				j = 0;
-				while (env_struct->env[c][j])
-					write(1, &env_struct->env[c][j++], 1);
-				write(1, &"\n", 1);
-			}
-			k = 0;
-			j = 0;
-			c++;
-		}
-		// while (env_struct->unset[k] != env_struct->env[i][j])
-		// {
-		// 	printf("hey\n");
-		// 	while (env_struct->env[i][j])
-		// 	{
-		// 		write(1, &env_struct->env[i][j], 1);
-		// 		j++;
-		// 	}
-		// 	j = 0;
-		// 	write(1, "\n", 1);
-		// 	i++;
-		// }
+		free(env_struct->env);
+		free(env_struct->exp);
+		env_struct->env = (char**)malloc(sizeof(char*) * (env_struct->count_lines));
+		env_struct->exp = (char**)malloc(sizeof(char*) * (env_struct->count_lines));
 	}
+	// ft_delete_equality_and_out(env_struct);
 }
 
 char	*ft_cd(t_env *env_struct)
