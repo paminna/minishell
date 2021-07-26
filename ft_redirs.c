@@ -37,7 +37,7 @@ void	ft_redir_out(t_redirs *redir, t_all *all)
 	if (redir->redir2_out == 1)
 	{
 		printf("hey\n");
-		while (1) //пока не сигнал 
+		while (1) //пока не сигналы
 		{
 			write(1, "<", 1);
 			i = get_next_line(0, &str);
@@ -45,9 +45,10 @@ void	ft_redir_out(t_redirs *redir, t_all *all)
 	}
 	else if (redir->redir_out == 1)
 	{
-		file = open(redir->file, O_CREAT | O_RDONLY | O_TRUNC, 0666);
+		file = open(redir->file, O_RDONLY, 0666);
 		if (file < 0)
 			ft_errors("error");
+			//
 		dup2(file, all->fd_std_in);
 		close(file);
 	}
@@ -57,11 +58,7 @@ void	ft_redir(t_redirs *redir, t_all *all)
 {
 	// int 	file;
 	// int		fd[2];
-	int backup_in;
-	int	backup_out;
 
-	backup_in = dup(0);
-	backup_out = dup(1);
 	if (redir->redir2_in || redir->redir_in)
 		ft_redir_in(redir, all);
 	else if (redir->redir2_out || redir->redir_out)
@@ -75,13 +72,13 @@ void	ft_check_redirs(t_all *all)
 	int i;
 
 	i = 0;
-	dup2(all->fd_std_in, 0);
+	dup2(all->fd_std_in, 0); //инициализация
 	dup2(all->fd_std_out, 1);
-	// backup_in = dup(0);
-	// backup_out = dup(1);
 	while (i < all->num_of_redirs)
 	{
 		if (all->redirs[i].file != NULL)
 			ft_redir(&all->redirs[i], all);
 	}
+	// all->backup_in = dup(0);
+	// all->backup_out = dup(1);
 }
