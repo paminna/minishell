@@ -68,50 +68,45 @@ void	ft_check_all_keys(t_env *env_struct)
 {
 	int i;
 	int j;
-	int len_key;
+	// int len_key;
 
 	i = 0;
-	j = 0;
 	// while (ft_strcmp(env_struct->env[i], "TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n003vdrm00yvf5/T/") > 0)
 	// 	i++;
-	while (env_struct->env[i])
+	while (i != env_struct->count_lines - 1)
 	{
-		while (env_struct->env[i][j])
-		{
-			if (env_struct->env[i][j] != '=')
-				j++;
-			else if (env_struct->env[i][j] == '=')
-			{
-				len_key = 0;
-				while (env_struct->env[i][len_key] == env_struct->key[len_key] && len_key < j)
-					len_key++;
-				if (len_key != j - 1)
-					env_struct->flags.new_key = 1;
-				j++;
-			}
-		}
 		j = 0;
+		while (env_struct->env[i][j] != '=' && env_struct->env[i][j] != '\0')
+			j++;
+		if (env_struct->env[i][j] == '=')
+		{
+			if (ft_strncmp(&env_struct->env[i][j], env_struct->key, ft_strlen(env_struct->key)))
+				env_struct->flags.new_key = 1;
+		}
 		i++;
 	}
 }
 
 
-void	ft_check_key_val(t_env *env_struct)
-{
-	if (!(ft_isalpha(env_struct->value[0]) || env_struct->value[0] == '_'))
-		ft_errors("not a valid identifier");
-}
+// void	ft_check_key_val(t_env *env_struct)
+// {
+// 	if (!(ft_isalpha(env_struct->value[0]) || env_struct->value[0] == '_'))
+// 		ft_errors("not a valid identifier");
+// }
 
 void	ft_check_exports(t_env *env_struct, char **env)
 {
 	int i;
 
 	i = 0;
-	ft_check_all_keys(env_struct);
-	ft_check_key_val(env_struct);
+	// ft_check_key_val(env_struct);
+	env_struct->flags.new_key = 0;
+
+	// если добавляем ключ, нужно перемоллочить память на одну строку больше, поэтому очищаем старые маллоки
 	if (env_struct->key)
 	{
-		free(env_struct->env);
+		free(env_struct->env); 
+		free(env_struct->exp);
 		env_struct->count_lines++;
 	}
 	env_struct->env = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
@@ -124,6 +119,8 @@ void	ft_check_exports(t_env *env_struct, char **env)
 		env_struct->exp[i] = ft_strdup(env[i]);
 		i++;
 	}
+	ft_check_all_keys(env_struct);
+	env_struct->value = NULL; // вытащить в инициализатор
 	if (env_struct->key && env_struct->flags.new_key && env_struct->value)
 	{
 		env_struct->exp[i] = ft_strjoin(env_struct->key, env_struct->value);
@@ -147,6 +144,7 @@ void	ft_copy_exp(char **env, t_env *env_struct)
 		i++;
 	env_struct->count_lines = i;
 	i = 0;
+	printf("ft_copy_exp\n");
 	ft_check_exports(env_struct, env);
 	ft_sort_exp(env_struct);
 	while (i < env_struct->count_lines)
@@ -182,26 +180,32 @@ void	ft_out_exp(t_env *env_struct)
 	int i;
 	int j;
 	char s;
+	int len;
 
 	i = 0;
 	j = 0;
 	s = 34;
-	while (env_struct->exp[i])
+	len = 0;
+	while (i != env_struct->count_lines)
 	{
-		while (env_struct->exp[i][j] != '=')
+		len = ft_strlen(env_struct->exp[i]);
+		while (env_struct->exp[i][j] != '=' && env_struct->exp[i][j] != '\0')
 		{
 			write(1, &env_struct->exp[i][j], 1);
 			j++;
 		}
-		write(1, &env_struct->exp[i][j], 1);
-		j++;
-		write(1, &s, 1);
-		while (env_struct->exp[i][j])
+		if (env_struct->exp[i][j] == '=')
 		{
 			write(1, &env_struct->exp[i][j], 1);
+			write(1, &s, 1);
 			j++;
+			while (j < len)
+			{
+				write(1, &env_struct->exp[i][j], 1);
+				j++;
+			}
+			write(1, &s, 1);
 		}
-		write(1, &s, 1);
 		write(1, "\n", 1);
 		j = 0;
 		i++;

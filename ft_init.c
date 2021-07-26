@@ -11,6 +11,7 @@ void	ft_init_flags(t_env *env_struct, t_all *all)
 	all->num_of_redirs = 0;
 	all->fd_std_in = 0;
 	all->fd_std_out = 1;
+	env_struct->value = NULL;
 	while (i < all->num_of_redirs)
 	{
 		all->redirs[i].redir_in = 0;

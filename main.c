@@ -37,40 +37,42 @@ void	ft_is_builtin(t_all *all, t_env *env_struct)
 	}
 }
 
-void	ft_find_path(char *str, t_env *env_struct)
-{
+// void	ft_find_path(char *str, t_env *env_struct)
+// {
 	
-}
+// }
 
-void	ft_check_binary(t_all *all, t_env *env_struct)
-{
-	int i;
-	int j;
+// void	ft_check_binary(t_all *all, t_env *env_struct)
+// {
+// 	int i;
+// 	int j;
 
-	j = 0;
-	i = 0;
-	while (i < all->count_args)
-	{
-		if (all->result[i][j] == '$' || all->result[i][j] != '/')
-			ft_find_path(all->result[i], env_struct);
-		// else
-		// 	ft_find_binary();
-		i++;
-	}
-}
+// 	j = 0;
+// 	i = 0;
+// 	while (i < all->count_args)
+// 	{
+// 		// if (all->result[i][j] == '$' || all->result[i][j] != '/')
+// 		// 	ft_find_path(all->result[i], env_struct);
+// 		// else
+// 		// 	ft_find_binary();
+// 		i++;
+// 	}
+// }
 
 int main(int argc, char **argv, char **env)
 {
-	t_all all;
+	// t_all all;
 	t_env env_struct;
 
 	// env_struct.key = "name";
 	// env_struct.value = "=";
-	// all->result[3] = (char*)malloc(5);
-	// all->result[3] = "exp";
+	env_struct.key = "name";
+	// env_struct.value = "=value";
+	// all.result[3] = (char*)malloc(5);
+	// all.result[3] = "exp";
 	// ft_init_flags(&env_struct, &all);
 	// ft_copy_env(env, &env_struct);
-	// ft_copy_exp(env, &env_struct);
+	ft_copy_exp(env, &env_struct);
 	(void)argc;
 	(void)argv;
 	// all.redirs->redir2_out = 1;
@@ -93,8 +95,8 @@ int main(int argc, char **argv, char **env)
 	// 	ft_pwd();
 	// if (ft_strncmp(all->result[2], "env", ft_stlren(all->result[2])) == 0)
 		// ft_out_env(&env_struct);
-	// if (ft_strncmp(all->result[3], "exp", ft_stlren(all->result[3])) == 0)
-		// ft_out_exp(&env_struct);
+	// if (ft_strncmp(all.result[3], "exp", ft_strlen(all.result[3])) == 0)
+		ft_out_exp(&env_struct);
 	// if (ft_strncmp(all->result[4], "XPC_FLAGS", ft_stlren(all->result[4])) == 0)
 	// env_struct.unset[0] = 'T';
 	// env_struct.unset[1] = 'E';
@@ -118,13 +120,13 @@ int main(int argc, char **argv, char **env)
 	// env_struct.flags.redir_b = 1;
 	// ft_redir("hello", &env_struct);
 
-	while (1)
-	{
-		//readline(line);
-		//add_history(line);
-		//parse
-		ft_check_redirs(&all);
-		ft_is_builtin(&all, &env_struct);
-		ft_check_binary(&all, &env_struct);
-	}
+	// while (1)
+	// {
+	// 	//readline(line);
+	// 	//add_history(line);
+	// 	//parse
+	// 	ft_check_redirs(&all);
+	// 	ft_is_builtin(&all, &env_struct);
+	// 	ft_check_binary(&all, &env_struct);
+	// }
 }
