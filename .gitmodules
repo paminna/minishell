@@ -1,0 +1,2 @@
+[submodule "sources/googletest"]
+	url = https://github.com/paminna/static_library
