@@ -31,59 +31,55 @@ void	ft_pwd()
 void	ft_unset(t_env *env_struct)
 {
 	int i;
-	int j;
-	int k;
-	int c;
+	t_env	env_copy;
 
-	c = 0;
-	k = 0;
 	i = 0;
-	j = 0;
+	if (!env_copy.env || !env_copy.exp)
+		ft_errors("malloc");
 	ft_check_unset_env(env_struct);
 	if (env_struct->flags.let_unset)
 	{
-		while (env_struct->unset[k] != env_struct->env[i][j])
+		while (env_struct->env[i])
 		{
-			while (env_struct->env[i][j])
+			if (!ft_strncmp(env_struct->env[i], env_struct->unset, env_struct->len_key_unset))
 			{
-				write(1, &env_struct->env[i][j], 1);
-				j++;
+				i++;
+				env_copy.env[i] = ft_strdup(env_struct->env[i]);
+				i++;
 			}
-			j = 0;
-			write(1, "\n", 1);
+			env_copy.env[i] = ft_strdup(env_struct->env[i]);
 			i++;
 		}
-		c = i;
-		while (env_struct->env[c])
+		i = 0;
+		while (env_struct->exp[i])
 		{
-			while (env_struct->unset[k] == env_struct->env[c][j])
-			{	
-				k++;
-				j++;
-			}
-			if (!(env_struct->env[c][j] == '=' && k == env_struct->len_key_unset))
+			if (!ft_strncmp(&(env_struct->exp[i][ft_strlen("declare -x ")]), env_struct->unset, env_struct->len_key_unset))
 			{
-				j = 0;
-				while (env_struct->env[c][j])
-					write(1, &env_struct->env[c][j++], 1);
-				write(1, &"\n", 1);
+				i++;
+				env_copy.exp[i] = ft_strdup(env_struct->exp[i]);
+				i++;
 			}
-			k = 0;
-			j = 0;
-			c++;
+			env_copy.exp[i] = ft_strdup(env_struct->exp[i]);
+			i++;
 		}
-		// while (env_struct->unset[k] != env_struct->env[i][j])
-		// {
-		// 	printf("hey\n");
-		// 	while (env_struct->env[i][j])
-		// 	{
-		// 		write(1, &env_struct->env[i][j], 1);
-		// 		j++;
-		// 	}
-		// 	j = 0;
-		// 	write(1, "\n", 1);
-		// 	i++;
-		// }
+	}
+	i = 0;
+	while (env_struct->exp[i])
+		free(env_struct->exp[i++]);
+	i = 0;
+	while (env_struct->env[i])
+		free(env_struct->env[i++]);
+	i = 0;
+	while (env_copy.exp[i])
+	{
+		env_struct->exp[i] = ft_strdup(env_copy.exp[i]);
+		i++;
+	}
+	i = 0;
+	while (env_copy.env[i])
+	{
+		env_struct->env[i] = ft_strdup(env_copy.env[i]);
+		i++;
 	}
 }
 
@@ -104,6 +100,8 @@ char	*ft_cd(t_env *env_struct)
 			ft_check_name(env_struct->env[i], &env_struct->old_dir);
 		else if (env_struct->env[i][j] == 'P')
 			ft_check_name(env_struct->env[i], &env_struct->new_dir);
+		// else
+			//создать переменную
 		i++;
 	}
 	i = 0;
@@ -113,6 +111,8 @@ char	*ft_cd(t_env *env_struct)
 			ft_check_name(env_struct->exp[i], &env_struct->old_dir);
 		else if (env_struct->exp[i][j] == 'P')
 			ft_check_name(env_struct->exp[i], &env_struct->new_dir);
+		// else
+			// создать переменную
 		i++;
 	}
 	// добавить возможность создания этих переменных если они были удалены
