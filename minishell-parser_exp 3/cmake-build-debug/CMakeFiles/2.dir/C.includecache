@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/main.c
+mini.h
+/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/mini.h
+
+/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/mini.h
+stdio.h
+-
+unistd.h
+-
+stdlib.h
+-
+term.h
+-
+fcntl.h
+-
+errno.h
+-
+signal.h
+-
+dirent.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+errno.h
+-
+string.h
+-
+term.h
+-
+termios.h
+-
+readline/readline.h
+-
+readline/history.h
+-
+
