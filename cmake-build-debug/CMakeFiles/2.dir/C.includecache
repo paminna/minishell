@@ -1,0 +1,94 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/paminna/Downloads/Telegram Desktop/last version/env.c
+mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/export.c
+mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/function/cd.c
+../mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/function/ft_unset.c
+../mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/function/pwd.c
+../mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/get_next_line.c
+mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/get_next_line_utils.c
+mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/libft.c
+mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/main.c
+mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+stdio.h
+-
+unistd.h
+-
+stdlib.h
+-
+term.h
+-
+fcntl.h
+-
+errno.h
+-
+signal.h
+-
+dirent.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+errno.h
+-
+string.h
+-
+term.h
+-
+termios.h
+-
+readline/readline.h
+-
+readline/history.h
+-
+
+/Users/paminna/Downloads/Telegram Desktop/last version/parser/parser_first_s.c
+../mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/parser/parser_quotes.c
+../mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/signals.c
+mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+
+/Users/paminna/Downloads/Telegram Desktop/last version/work_with_list/free_l.c
+../mini.h
+/Users/paminna/Downloads/Telegram Desktop/last version/mini.h
+

@@ -1,0 +1,3 @@
+/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir
