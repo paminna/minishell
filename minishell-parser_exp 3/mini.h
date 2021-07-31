@@ -116,7 +116,7 @@ typedef struct s_all
 	int			pipe_f;
 	int flag;
 	int flag_red;
-	// t_env		*env_struct;
+	t_env		env_struct;
 }	t_all;
 
 // typedef struct s_history

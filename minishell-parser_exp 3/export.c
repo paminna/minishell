@@ -174,8 +174,8 @@ void	ft_start_exp(char **env, t_env *env_struct)
 {
 
 //	if (!env_struct->value)
-		env_struct->value = NULL;
-		printf("after %d\n", env_struct->count_lines);
+		// env_struct->value = NULL;
+		// printf("after %d\n", env_struct->count_lines);
 	ft_copy_exp(env, env_struct);
 //	i = 0;
 //	while (env_struct->exp[i])

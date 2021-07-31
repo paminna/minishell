@@ -181,22 +181,19 @@ void work_with_execve(char *mass)
 
 void find_command(t_all *all, char **env)
 {
-	t_env env_struct;
-
-
-
+	printf("%d\n", all->env_struct.count_lines);
 	if (!ft_strncmp(all->result[0], "echo", 5))
 		parser_echo(all->result);
 	else if (!ft_strncmp(all->result[0], "export", 7))
-		parser_export(all->result, &env_struct, env);
+		parser_export(all->result, &all->env_struct, env);
 	else if (!ft_strncmp(all->result[0], "cd", 3))
-		ft_cd(&env_struct);// если пусто тильда или записать new_dir
+		ft_cd(&all->env_struct);// если пусто тильда или записать new_dir
 	else if (!ft_strncmp(all->result[0], "pwd", 4))
 		ft_pwd();
 	// else if (!ft_strncmp(all->result[0], "unset", 6))
 	// 	parser_unset(all->result);
 	else if (!ft_strncmp(all->result[0], "env", 4))
-		ft_out_env(&env_struct);
+		ft_out_env(&all->env_struct);
 	else if (!ft_strncmp(all->result[0], "exit", 5))
 		my_exit(all->result);
 	else
@@ -423,6 +420,8 @@ t_all *parser(char *str, t_all *all, char **env)
 	char	*s;
 
 	count = 0;
+	printf("hey\n");
+	printf("in parser %d\n", all->env_struct.count_lines);
 	ft_bzero(&words, sizeof(t_cnt));
 	ft_bzero(&pipes, sizeof(t_cnt));
 	while (*str != '\0')
@@ -669,15 +668,15 @@ int main(int ac, char **av, char **env)
 	int		i;
 	t_all	*all;
 	int				fd;
-	t_env env_struct;
+	// t_env env_struct;
 
-	env_struct.key = "name";
-	env_struct.value = "=";
+	// all->env_struct.key = "name";
+	// env_struct.value = "=";
 
 	all = (t_all *) ft_calloc(1, sizeof(t_all));
 	get_env(all, env);
-	ft_init_flags(&env_struct, env);
-	ft_copy_env(env, &env_struct);
+	ft_init_flags(&all->env_struct, env);
+	ft_copy_env(env, &all->env_struct);
 	if (ac > 1 && av[1] != NULL)
 		ft_putstr_fd("Invalid arguments\n", 1);
 	while (1)
