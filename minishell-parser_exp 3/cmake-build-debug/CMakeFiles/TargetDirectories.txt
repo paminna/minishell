@@ -1,3 +1,3 @@
-/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/2.dir
+/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/2.dir

@@ -69,6 +69,7 @@ typedef	struct	s_flags
 	int			redir_m;
 	int			redir2_m;
 	int			redir2_b;
+	int         quotes;
 }				t_flags;
 
 typedef struct	s_env
@@ -115,43 +116,44 @@ typedef struct s_all
 	int			pipe_f;
 	int flag;
 	int flag_red;
+	// t_env		*env_struct;
 }	t_all;
 
-typedef struct s_history
-{
-	struct termios	term;
-	char			*term_name;
-	int				was_read;
-	char			buf[10];
-	char			**arr;
-	char			*del_tmp;
-	int				index;
-	int				last;
-}					t_history;
+// typedef struct s_history
+// {
+// 	struct termios	term;
+// 	char			*term_name;
+// 	int				was_read;
+// 	char			buf[10];
+// 	char			**arr;
+// 	char			*del_tmp;
+// 	int				index;
+// 	int				last;
+// }					t_history;
 
-typedef	struct	s_parser
-{
-	char		**history;
-	char		**comand;
-	char		*buf;
-	char		*str;
-	int			len_str;
-}				t_parser;
+// typedef	struct	s_parser
+// {
+// 	char		**history;
+// 	char		**comand;
+// 	char		*buf;
+// 	char		*str;
+// 	int			len_str;
+// }				t_parser;
 
-t_all	g_all;
+// t_all	g_all;
 
 void	signal_for_new_line();
 /*Функции для работы с терминалом*/
 
-void rl_replace_line();
-void		canonical_input_off(t_history *tmp);
-void		canonical_input_on(t_history *tmp);
-void		my_backspace(t_history *history);
-void		write_new_symbol(t_history *history);
-void		arrow_to_up(t_history *history);
-void		arrow_to_down(t_history *history);
-void		canonical_input_on_with_exit(struct termios *term, int error);
-void		signal_exit_from_cat(int sig);
+// void rl_replace_line();
+// void		canonical_input_off(t_history *tmp);
+// void		canonical_input_on(t_history *tmp);
+// void		my_backspace(t_history *history);
+// void		write_new_symbol(t_history *history);
+// void		arrow_to_up(t_history *history);
+// void		arrow_to_down(t_history *history);
+// void		canonical_input_on_with_exit(struct termios *term, int error);
+// void		signal_exit_from_cat(int sig);
 //t_all					*g_all;
 
 // int		main(int argc, char **argv, char **env);
@@ -210,7 +212,7 @@ char	*ft_cd(t_env *env_struct);
 void	ft_pwd();
 void	ft_out_env(t_env *env_struct);
 
-void	ft_init_flags(t_env *env_struct);
+void	ft_init_flags(t_env *env_struct, char **env);
 void	ft_copy_env(char **env, t_env *env_struct);
 void	ft_errors(char *str);
 void	ft_unset(t_env *env_struct);
@@ -220,5 +222,6 @@ void	ft_sort_exp(t_env *env_struct);
 
 //static void	init_history(t_history *history);
 //void	get_history_from_file(void);
-
+int	delete_element_from_list(t_list_env **list, char *key);
+void	clear_list(t_cnt *cnt);
 #endif

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3
+# Install script for directory: /Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

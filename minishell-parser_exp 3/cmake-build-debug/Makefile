@@ -67,10 +67,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3"
+CMAKE_SOURCE_DIR = "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -385,59 +385,59 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/main.c.s
 .PHONY : main.c.s
 
-parser_first_s.o: parser_first_s.c.o
+parser/parser_first_s.o: parser/parser_first_s.c.o
 
-.PHONY : parser_first_s.o
-
-# target to build an object file
-parser_first_s.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser_first_s.c.o
-.PHONY : parser_first_s.c.o
-
-parser_first_s.i: parser_first_s.c.i
-
-.PHONY : parser_first_s.i
-
-# target to preprocess a source file
-parser_first_s.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser_first_s.c.i
-.PHONY : parser_first_s.c.i
-
-parser_first_s.s: parser_first_s.c.s
-
-.PHONY : parser_first_s.s
-
-# target to generate assembly for a file
-parser_first_s.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser_first_s.c.s
-.PHONY : parser_first_s.c.s
-
-parser_quotes.o: parser_quotes.c.o
-
-.PHONY : parser_quotes.o
+.PHONY : parser/parser_first_s.o
 
 # target to build an object file
-parser_quotes.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser_quotes.c.o
-.PHONY : parser_quotes.c.o
+parser/parser_first_s.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser/parser_first_s.c.o
+.PHONY : parser/parser_first_s.c.o
 
-parser_quotes.i: parser_quotes.c.i
+parser/parser_first_s.i: parser/parser_first_s.c.i
 
-.PHONY : parser_quotes.i
+.PHONY : parser/parser_first_s.i
 
 # target to preprocess a source file
-parser_quotes.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser_quotes.c.i
-.PHONY : parser_quotes.c.i
+parser/parser_first_s.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser/parser_first_s.c.i
+.PHONY : parser/parser_first_s.c.i
 
-parser_quotes.s: parser_quotes.c.s
+parser/parser_first_s.s: parser/parser_first_s.c.s
 
-.PHONY : parser_quotes.s
+.PHONY : parser/parser_first_s.s
 
 # target to generate assembly for a file
-parser_quotes.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser_quotes.c.s
-.PHONY : parser_quotes.c.s
+parser/parser_first_s.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser/parser_first_s.c.s
+.PHONY : parser/parser_first_s.c.s
+
+parser/parser_quotes.o: parser/parser_quotes.c.o
+
+.PHONY : parser/parser_quotes.o
+
+# target to build an object file
+parser/parser_quotes.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser/parser_quotes.c.o
+.PHONY : parser/parser_quotes.c.o
+
+parser/parser_quotes.i: parser/parser_quotes.c.i
+
+.PHONY : parser/parser_quotes.i
+
+# target to preprocess a source file
+parser/parser_quotes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser/parser_quotes.c.i
+.PHONY : parser/parser_quotes.c.i
+
+parser/parser_quotes.s: parser/parser_quotes.c.s
+
+.PHONY : parser/parser_quotes.s
+
+# target to generate assembly for a file
+parser/parser_quotes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/parser/parser_quotes.c.s
+.PHONY : parser/parser_quotes.c.s
 
 signals.o: signals.c.o
 
@@ -465,6 +465,33 @@ signals.s: signals.c.s
 signals.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/signals.c.s
 .PHONY : signals.c.s
+
+work_with_list/free_l.o: work_with_list/free_l.c.o
+
+.PHONY : work_with_list/free_l.o
+
+# target to build an object file
+work_with_list/free_l.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/work_with_list/free_l.c.o
+.PHONY : work_with_list/free_l.c.o
+
+work_with_list/free_l.i: work_with_list/free_l.c.i
+
+.PHONY : work_with_list/free_l.i
+
+# target to preprocess a source file
+work_with_list/free_l.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/work_with_list/free_l.c.i
+.PHONY : work_with_list/free_l.c.i
+
+work_with_list/free_l.s: work_with_list/free_l.c.s
+
+.PHONY : work_with_list/free_l.s
+
+# target to generate assembly for a file
+work_with_list/free_l.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/2.dir/build.make CMakeFiles/2.dir/work_with_list/free_l.c.s
+.PHONY : work_with_list/free_l.c.s
 
 # Help Target
 help:
@@ -502,15 +529,18 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... parser_first_s.o"
-	@echo "... parser_first_s.i"
-	@echo "... parser_first_s.s"
-	@echo "... parser_quotes.o"
-	@echo "... parser_quotes.i"
-	@echo "... parser_quotes.s"
+	@echo "... parser/parser_first_s.o"
+	@echo "... parser/parser_first_s.i"
+	@echo "... parser/parser_first_s.s"
+	@echo "... parser/parser_quotes.o"
+	@echo "... parser/parser_quotes.i"
+	@echo "... parser/parser_quotes.s"
 	@echo "... signals.o"
 	@echo "... signals.i"
 	@echo "... signals.s"
+	@echo "... work_with_list/free_l.o"
+	@echo "... work_with_list/free_l.i"
+	@echo "... work_with_list/free_l.s"
 .PHONY : help
 
 

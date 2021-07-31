@@ -10,9 +10,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/2.dir/get_next_line_utils.c.o"
   "CMakeFiles/2.dir/libft.c.o"
   "CMakeFiles/2.dir/main.c.o"
-  "CMakeFiles/2.dir/parser_first_s.c.o"
-  "CMakeFiles/2.dir/parser_quotes.c.o"
+  "CMakeFiles/2.dir/parser/parser_first_s.c.o"
+  "CMakeFiles/2.dir/parser/parser_quotes.c.o"
   "CMakeFiles/2.dir/signals.c.o"
+  "CMakeFiles/2.dir/work_with_list/free_l.c.o"
 )
 
 # Per-language clean rules from dependency scanning.

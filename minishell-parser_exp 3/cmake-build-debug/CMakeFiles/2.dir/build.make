@@ -62,10 +62,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3"
+CMAKE_SOURCE_DIR = "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/2.dir/depend.make
@@ -78,165 +78,179 @@ include CMakeFiles/2.dir/flags.make
 
 CMakeFiles/2.dir/main.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/2.dir/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/main.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/2.dir/main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/main.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/main.c"
 
 CMakeFiles/2.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/main.c" > CMakeFiles/2.dir/main.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/main.c" > CMakeFiles/2.dir/main.c.i
 
 CMakeFiles/2.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/main.c" -o CMakeFiles/2.dir/main.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/main.c" -o CMakeFiles/2.dir/main.c.s
+
+CMakeFiles/2.dir/work_with_list/free_l.c.o: CMakeFiles/2.dir/flags.make
+CMakeFiles/2.dir/work_with_list/free_l.c.o: ../work_with_list/free_l.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/2.dir/work_with_list/free_l.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/work_with_list/free_l.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/work_with_list/free_l.c"
+
+CMakeFiles/2.dir/work_with_list/free_l.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/work_with_list/free_l.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/work_with_list/free_l.c" > CMakeFiles/2.dir/work_with_list/free_l.c.i
+
+CMakeFiles/2.dir/work_with_list/free_l.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/work_with_list/free_l.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/work_with_list/free_l.c" -o CMakeFiles/2.dir/work_with_list/free_l.c.s
 
 CMakeFiles/2.dir/libft.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/libft.c.o: ../libft.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/2.dir/libft.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/libft.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/libft.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/2.dir/libft.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/libft.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/libft.c"
 
 CMakeFiles/2.dir/libft.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/libft.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/libft.c" > CMakeFiles/2.dir/libft.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/libft.c" > CMakeFiles/2.dir/libft.c.i
 
 CMakeFiles/2.dir/libft.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/libft.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/libft.c" -o CMakeFiles/2.dir/libft.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/libft.c" -o CMakeFiles/2.dir/libft.c.s
 
-CMakeFiles/2.dir/parser_quotes.c.o: CMakeFiles/2.dir/flags.make
-CMakeFiles/2.dir/parser_quotes.c.o: ../parser_quotes.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/2.dir/parser_quotes.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/parser_quotes.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/parser_quotes.c"
+CMakeFiles/2.dir/parser/parser_quotes.c.o: CMakeFiles/2.dir/flags.make
+CMakeFiles/2.dir/parser/parser_quotes.c.o: ../parser/parser_quotes.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/2.dir/parser/parser_quotes.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/parser/parser_quotes.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/parser/parser_quotes.c"
 
-CMakeFiles/2.dir/parser_quotes.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/parser_quotes.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/parser_quotes.c" > CMakeFiles/2.dir/parser_quotes.c.i
+CMakeFiles/2.dir/parser/parser_quotes.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/parser/parser_quotes.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/parser/parser_quotes.c" > CMakeFiles/2.dir/parser/parser_quotes.c.i
 
-CMakeFiles/2.dir/parser_quotes.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/parser_quotes.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/parser_quotes.c" -o CMakeFiles/2.dir/parser_quotes.c.s
+CMakeFiles/2.dir/parser/parser_quotes.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/parser/parser_quotes.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/parser/parser_quotes.c" -o CMakeFiles/2.dir/parser/parser_quotes.c.s
 
 CMakeFiles/2.dir/signals.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/signals.c.o: ../signals.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/2.dir/signals.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/signals.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/signals.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/2.dir/signals.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/signals.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/signals.c"
 
 CMakeFiles/2.dir/signals.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/signals.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/signals.c" > CMakeFiles/2.dir/signals.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/signals.c" > CMakeFiles/2.dir/signals.c.i
 
 CMakeFiles/2.dir/signals.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/signals.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/signals.c" -o CMakeFiles/2.dir/signals.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/signals.c" -o CMakeFiles/2.dir/signals.c.s
 
 CMakeFiles/2.dir/env.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/env.c.o: ../env.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/2.dir/env.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/env.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/env.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/2.dir/env.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/env.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/env.c"
 
 CMakeFiles/2.dir/env.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/env.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/env.c" > CMakeFiles/2.dir/env.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/env.c" > CMakeFiles/2.dir/env.c.i
 
 CMakeFiles/2.dir/env.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/env.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/env.c" -o CMakeFiles/2.dir/env.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/env.c" -o CMakeFiles/2.dir/env.c.s
 
 CMakeFiles/2.dir/function/cd.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/function/cd.c.o: ../function/cd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/2.dir/function/cd.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/function/cd.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/cd.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/2.dir/function/cd.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/function/cd.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/cd.c"
 
 CMakeFiles/2.dir/function/cd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/function/cd.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/cd.c" > CMakeFiles/2.dir/function/cd.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/cd.c" > CMakeFiles/2.dir/function/cd.c.i
 
 CMakeFiles/2.dir/function/cd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/function/cd.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/cd.c" -o CMakeFiles/2.dir/function/cd.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/cd.c" -o CMakeFiles/2.dir/function/cd.c.s
 
 CMakeFiles/2.dir/function/ft_unset.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/function/ft_unset.c.o: ../function/ft_unset.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/2.dir/function/ft_unset.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/function/ft_unset.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/ft_unset.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/2.dir/function/ft_unset.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/function/ft_unset.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/ft_unset.c"
 
 CMakeFiles/2.dir/function/ft_unset.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/function/ft_unset.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/ft_unset.c" > CMakeFiles/2.dir/function/ft_unset.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/ft_unset.c" > CMakeFiles/2.dir/function/ft_unset.c.i
 
 CMakeFiles/2.dir/function/ft_unset.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/function/ft_unset.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/ft_unset.c" -o CMakeFiles/2.dir/function/ft_unset.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/ft_unset.c" -o CMakeFiles/2.dir/function/ft_unset.c.s
 
 CMakeFiles/2.dir/function/pwd.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/function/pwd.c.o: ../function/pwd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/2.dir/function/pwd.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/function/pwd.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/pwd.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/2.dir/function/pwd.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/function/pwd.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/pwd.c"
 
 CMakeFiles/2.dir/function/pwd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/function/pwd.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/pwd.c" > CMakeFiles/2.dir/function/pwd.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/pwd.c" > CMakeFiles/2.dir/function/pwd.c.i
 
 CMakeFiles/2.dir/function/pwd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/function/pwd.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/function/pwd.c" -o CMakeFiles/2.dir/function/pwd.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/function/pwd.c" -o CMakeFiles/2.dir/function/pwd.c.s
 
 CMakeFiles/2.dir/get_next_line.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/get_next_line.c.o: ../get_next_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/2.dir/get_next_line.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/get_next_line.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/get_next_line.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/2.dir/get_next_line.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/get_next_line.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/get_next_line.c"
 
 CMakeFiles/2.dir/get_next_line.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/get_next_line.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/get_next_line.c" > CMakeFiles/2.dir/get_next_line.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/get_next_line.c" > CMakeFiles/2.dir/get_next_line.c.i
 
 CMakeFiles/2.dir/get_next_line.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/get_next_line.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/get_next_line.c" -o CMakeFiles/2.dir/get_next_line.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/get_next_line.c" -o CMakeFiles/2.dir/get_next_line.c.s
 
 CMakeFiles/2.dir/get_next_line_utils.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/get_next_line_utils.c.o: ../get_next_line_utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/2.dir/get_next_line_utils.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/get_next_line_utils.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/get_next_line_utils.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/2.dir/get_next_line_utils.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/get_next_line_utils.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/get_next_line_utils.c"
 
 CMakeFiles/2.dir/get_next_line_utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/get_next_line_utils.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/get_next_line_utils.c" > CMakeFiles/2.dir/get_next_line_utils.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/get_next_line_utils.c" > CMakeFiles/2.dir/get_next_line_utils.c.i
 
 CMakeFiles/2.dir/get_next_line_utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/get_next_line_utils.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/get_next_line_utils.c" -o CMakeFiles/2.dir/get_next_line_utils.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/get_next_line_utils.c" -o CMakeFiles/2.dir/get_next_line_utils.c.s
 
-CMakeFiles/2.dir/parser_first_s.c.o: CMakeFiles/2.dir/flags.make
-CMakeFiles/2.dir/parser_first_s.c.o: ../parser_first_s.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/2.dir/parser_first_s.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/parser_first_s.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/parser_first_s.c"
+CMakeFiles/2.dir/parser/parser_first_s.c.o: CMakeFiles/2.dir/flags.make
+CMakeFiles/2.dir/parser/parser_first_s.c.o: ../parser/parser_first_s.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/2.dir/parser/parser_first_s.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/parser/parser_first_s.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/parser/parser_first_s.c"
 
-CMakeFiles/2.dir/parser_first_s.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/parser_first_s.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/parser_first_s.c" > CMakeFiles/2.dir/parser_first_s.c.i
+CMakeFiles/2.dir/parser/parser_first_s.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/parser/parser_first_s.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/parser/parser_first_s.c" > CMakeFiles/2.dir/parser/parser_first_s.c.i
 
-CMakeFiles/2.dir/parser_first_s.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/parser_first_s.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/parser_first_s.c" -o CMakeFiles/2.dir/parser_first_s.c.s
+CMakeFiles/2.dir/parser/parser_first_s.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/parser/parser_first_s.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/parser/parser_first_s.c" -o CMakeFiles/2.dir/parser/parser_first_s.c.s
 
 CMakeFiles/2.dir/export.c.o: CMakeFiles/2.dir/flags.make
 CMakeFiles/2.dir/export.c.o: ../export.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/2.dir/export.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/export.c.o -c "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/export.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/2.dir/export.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/2.dir/export.c.o -c "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/export.c"
 
 CMakeFiles/2.dir/export.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/2.dir/export.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/export.c" > CMakeFiles/2.dir/export.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/export.c" > CMakeFiles/2.dir/export.c.i
 
 CMakeFiles/2.dir/export.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/2.dir/export.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/export.c" -o CMakeFiles/2.dir/export.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/export.c" -o CMakeFiles/2.dir/export.c.s
 
 # Object files for target 2
 2_OBJECTS = \
 "CMakeFiles/2.dir/main.c.o" \
+"CMakeFiles/2.dir/work_with_list/free_l.c.o" \
 "CMakeFiles/2.dir/libft.c.o" \
-"CMakeFiles/2.dir/parser_quotes.c.o" \
+"CMakeFiles/2.dir/parser/parser_quotes.c.o" \
 "CMakeFiles/2.dir/signals.c.o" \
 "CMakeFiles/2.dir/env.c.o" \
 "CMakeFiles/2.dir/function/cd.c.o" \
@@ -244,15 +258,16 @@ CMakeFiles/2.dir/export.c.s: cmake_force
 "CMakeFiles/2.dir/function/pwd.c.o" \
 "CMakeFiles/2.dir/get_next_line.c.o" \
 "CMakeFiles/2.dir/get_next_line_utils.c.o" \
-"CMakeFiles/2.dir/parser_first_s.c.o" \
+"CMakeFiles/2.dir/parser/parser_first_s.c.o" \
 "CMakeFiles/2.dir/export.c.o"
 
 # External object files for target 2
 2_EXTERNAL_OBJECTS =
 
 2 : CMakeFiles/2.dir/main.c.o
+2 : CMakeFiles/2.dir/work_with_list/free_l.c.o
 2 : CMakeFiles/2.dir/libft.c.o
-2 : CMakeFiles/2.dir/parser_quotes.c.o
+2 : CMakeFiles/2.dir/parser/parser_quotes.c.o
 2 : CMakeFiles/2.dir/signals.c.o
 2 : CMakeFiles/2.dir/env.c.o
 2 : CMakeFiles/2.dir/function/cd.c.o
@@ -260,11 +275,11 @@ CMakeFiles/2.dir/export.c.s: cmake_force
 2 : CMakeFiles/2.dir/function/pwd.c.o
 2 : CMakeFiles/2.dir/get_next_line.c.o
 2 : CMakeFiles/2.dir/get_next_line_utils.c.o
-2 : CMakeFiles/2.dir/parser_first_s.c.o
+2 : CMakeFiles/2.dir/parser/parser_first_s.c.o
 2 : CMakeFiles/2.dir/export.c.o
 2 : CMakeFiles/2.dir/build.make
 2 : CMakeFiles/2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable 2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Linking C executable 2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -277,6 +292,6 @@ CMakeFiles/2.dir/clean:
 .PHONY : CMakeFiles/2.dir/clean
 
 CMakeFiles/2.dir/depend:
-	cd "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3" "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3" "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug" "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug" "/Users/kalexand/Downloads/Telegram Desktop/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/2.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3" "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3" "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug" "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug" "/Users/kalexand/Desktop/untitled folder 7/minishell/minishell-parser_exp 3/cmake-build-debug/CMakeFiles/2.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/2.dir/depend
 

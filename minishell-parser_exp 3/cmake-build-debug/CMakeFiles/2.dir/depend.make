@@ -28,12 +28,15 @@ CMakeFiles/2.dir/libft.c.o: ../mini.h
 CMakeFiles/2.dir/main.c.o: ../main.c
 CMakeFiles/2.dir/main.c.o: ../mini.h
 
-CMakeFiles/2.dir/parser_first_s.c.o: ../mini.h
-CMakeFiles/2.dir/parser_first_s.c.o: ../parser_first_s.c
+CMakeFiles/2.dir/parser/parser_first_s.c.o: ../mini.h
+CMakeFiles/2.dir/parser/parser_first_s.c.o: ../parser/parser_first_s.c
 
-CMakeFiles/2.dir/parser_quotes.c.o: ../mini.h
-CMakeFiles/2.dir/parser_quotes.c.o: ../parser_quotes.c
+CMakeFiles/2.dir/parser/parser_quotes.c.o: ../mini.h
+CMakeFiles/2.dir/parser/parser_quotes.c.o: ../parser/parser_quotes.c
 
 CMakeFiles/2.dir/signals.c.o: ../mini.h
 CMakeFiles/2.dir/signals.c.o: ../signals.c
+
+CMakeFiles/2.dir/work_with_list/free_l.c.o: ../mini.h
+CMakeFiles/2.dir/work_with_list/free_l.c.o: ../work_with_list/free_l.c
 

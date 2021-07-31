@@ -3,13 +3,7 @@
 void	ft_copy_exp(char **env, t_env *env_struct)
 {
 	int i;
-	int j;
 
-	i = 0;
-	j = 0;
-//	while (env[i])
-//		i++;
-//	env_struct->count_lines = i;
 	i = 0;
 	ft_check_exports(env_struct, env);
 	ft_sort_exp(env_struct);
@@ -30,7 +24,7 @@ void	ft_sort_exp(t_env *env_struct)
 	j = 0;
 	while (i <= env_struct->count_lines - 1)
 	{
-		while (j <= env_struct->count_lines - i - 1)
+        while (j <= env_struct->count_lines - i - 1 && env_struct->exp[j + 1] != NULL)
 		{
 			if (ft_strcmp(env_struct->exp[j], env_struct->exp[j + 1]) > 0)
 			{
@@ -54,26 +48,47 @@ void	ft_out_exp(t_env *env_struct)
 	i = 0;
 	j = 0;
 	s = 34;
-	while (env_struct->exp[i])
-	{
-		while (env_struct->exp[i][j] != '=')
-		{
-			write(1, &env_struct->exp[i][j], 1);
-			j++;
-		}
-		write(1, &env_struct->exp[i][j], 1);
-		j++;
-		write(1, &s, 1);
-		while (env_struct->exp[i][j])
-		{
-			write(1, &env_struct->exp[i][j], 1);
-			j++;
-		}
-		write(1, &s, 1);
-		write(1, "\n", 1);
-		j = 0;
-		i++;
-	}
+    env_struct->flags.quotes = 0;
+    printf("val %s\n", env_struct->value);
+    printf("key %s\n", env_struct->key);
+    while (env_struct->exp[i])
+    {
+        if (env_struct->value != NULL)
+            while (env_struct->exp[i][j])
+            {
+                write(1, &env_struct->exp[i][j], 1);
+                j++;
+                if (env_struct->exp[i][j] == '=')
+                {
+                    write(1, &env_struct->exp[i][j], 1);
+                    j++;
+                    write(1, &s, 1);
+                }
+                if (env_struct->exp[i][j] == '\0')
+                    write(1, &s,1);
+            }
+        else
+            while (env_struct->exp[i][j] != '\0')
+            {
+                write(1, &env_struct->exp[i][j], 1);
+                j++;
+                if (env_struct->exp[i][j] == '=')
+                {
+                    write(1, &env_struct->exp[i][j], 1);
+                    j++;
+                    write(1, &s, 1);
+                    env_struct->flags.quotes = 1;
+                }
+                if (env_struct->exp[i][j] == '\0' && env_struct->flags.quotes == 1)
+                {
+                    write(1, &s,1);
+                    env_struct->flags.quotes = 0;
+                }
+            }
+        write(1, "\n", 1);
+        j = 0;
+        i++;
+    }
 }
 
 int     ft_strcmp1(const char *s1, const char *s2)
@@ -107,7 +122,7 @@ void	ft_check_all_keys(t_env *env_struct)
             j++;
         if (env_struct->env[i][j] == '=')
         {
-            if (ft_strncmp(&env_struct->env[i][j], env_struct->key, ft_strlen(env_struct->key)))
+            if (ft_strncmp(&env_struct->env[i][j], env_struct->key, ft_strlen(env_struct->key)) && env_struct->key != NULL)
                 env_struct->flags.new_key = 1;
         }
         i++;
@@ -126,22 +141,23 @@ void	ft_check_exports(t_env *env_struct, char **env)
     // если добавляем ключ, нужно перемоллочить память на одну строку больше, поэтому очищаем старые маллоки
     if (env_struct->key)
     {
-        free(env_struct->env);
-        free(env_struct->exp);
+//        добавить очистку
+//        free(env_struct->env);
+//        free(env_struct->exp);
         env_struct->count_lines++;
     }
     env_struct->env = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
     env_struct->exp = (char**)malloc(sizeof(char*) * (env_struct->count_lines + 1));
     if (!env_struct->env)
         ft_errors("malloc error");
-    while (i < env_struct->count_lines)
+    while (i < env_struct->count_lines - 1)
     {
         env_struct->env[i] = ft_strdup(env[i]);
         env_struct->exp[i] = ft_strdup(env[i]);
         i++;
     }
     ft_check_all_keys(env_struct);
-    env_struct->value = NULL; // вытащить в инициализатор
+//    env_struct->value = NULL; // вытащить в инициализатор
     if (env_struct->key && env_struct->flags.new_key && env_struct->value)
     {
         env_struct->exp[i] = ft_strjoin(env_struct->key, env_struct->value);
@@ -156,15 +172,10 @@ void	ft_check_exports(t_env *env_struct, char **env)
 
 void	ft_start_exp(char **env, t_env *env_struct)
 {
-	int i;
-	int j;
 
-	i = 0;
-	j = 0;
-	while (env[i])
-//	    printf("%s\n", env[i++]);
-	    ++i;
-	env_struct->count_lines = i;
+//	if (!env_struct->value)
+		env_struct->value = NULL;
+		printf("after %d\n", env_struct->count_lines);
 	ft_copy_exp(env, env_struct);
 //	i = 0;
 //	while (env_struct->exp[i])

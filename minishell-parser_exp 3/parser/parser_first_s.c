@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 void	check_sim(char *str)
 {
@@ -11,7 +11,7 @@ void	check_sim(char *str)
 		write(2, "Minishell>> ", 12);
 		write(2,"syntax error near unexpected token ", 35);
 		write(2,"\'", 1);
-		ft_putstr_fd(str, 2); //TODO + очищение памяти
+		ft_putstr_fd(str, 2);
 		write(2,"\'\n", 3);
 		return ;
 	}

@@ -22,5 +22,5 @@ set(INCLUDE_DIR /Users/paminna/.brew/opt/readline/lib/)
 #        -lreadline -L~/.brew/opt/readline/include ~/.brew/Cellar/readline/8.1/lib/libreadline.8.1.dylib ~/.brew/Cellar/readline/8.1/lib/libhistory.8.1.dylib -I~/.brew/opt/readline/include -ltermcap
 #        #        -Wall -Wextra -Werror
 #)
-add_executable(2 main.c libft.c parser_quotes.c mini.h signals.c env.c function/cd.c function/ft_unset.c function/pwd.c  get_next_line.c get_next_line_utils.c parser_first_s.c export.c)
+add_executable(2 main.c work_with_list/free_l.c libft.c parser/parser_quotes.c mini.h signals.c env.c function/cd.c function/ft_unset.c function/pwd.c  get_next_line.c get_next_line_utils.c parser/parser_first_s.c export.c)
 target_link_libraries(2 readline)

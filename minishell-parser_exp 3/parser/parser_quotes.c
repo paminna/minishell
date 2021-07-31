@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	check_spec_s(char c)
 {
