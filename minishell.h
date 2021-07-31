@@ -30,7 +30,6 @@ typedef	struct	s_all
 	int			fd_std_in;
 	int			fd_std_out;
 	int			count_args;
-	char		*path;
 }				t_all;
 
 typedef	struct	s_flags
@@ -53,6 +52,7 @@ typedef struct	s_env
 	int			count_lines;
 	int			len_key_unset;
 	int			code;
+	char		*path;
 	// char		**env_copy;
 	t_flags		flags;
 }				t_env;
