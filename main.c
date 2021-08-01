@@ -113,53 +113,107 @@ int	ft_isalnum(int smbl)
 		return (0);
 }
 
-
-void	parser_export2(char *massiv, t_env *env_struct, char **env)
+char    *return_key(char *str)    //из экспорта
 {
-	int i;
-	int sm; // 1 если ошибка
+    int i;
+    char *res;
 
-	env_struct->str = ft_strdup(massiv); // вся строка (str=3ptr)
-	env_struct->key = parser_key_export(env_struct->str); //ключ (str)
-	while(*massiv)
-	{
-		if(*massiv == '=')
-			env_struct->value = parser_env_export(env_struct->str); //значение с равно (=ptr3)
-		massiv++;
-	}
-	sm = 0;
-	i = 0;
-	if (env_struct->key[i] == '_' || !(ft_isalpha(env_struct->key[i])))// если ПЕРВЫЙ символ в ключе цифры или символ, кроме _ : ошибка
-		sm = 1;
-	i = -1;
-	while (env_struct->key[++i]) //если в ключе содержаться символы кроме букв, цифр и _ ошибка
-	{
-		if (!(ft_isalnum(env_struct->key[i])) && env_struct->key[i] != '_')
-			sm = 1;
-	}
-	if (sm != 1)
-		ft_start_exp(env, env_struct);
-	if (sm == 1) // в случае ошибки в ключе
-	{
-		write(2,"export: ", 8);
-		write(2,"\'", 1);
-		ft_putstr_fd(env_struct->str, 2); //TODO + очищение памяти
-		free(env_struct->key);
-		free(env_struct->str);
-		write(2,"\'", 1);
-		write(2,": not a valid identifier\n", 25);
-	}
-	printf("val %s\n", env_struct->value);
-	printf("key %s\n", env_struct->key);
+    i = 0;
+    while (str[i] != '=')
+        i++;
+    res = (char*)malloc(i + 1);
+    i = 0;
+    while (str[i] != '=')
+    {
+        res[i] = str[i];
+        i++;
+    }
+    return (res);
+}
+
+void	parser_export2(char **massiv, t_env *env_struct, char **env)
+{
+//	int i;
+//	int j;
+//	int sm; // 1 если ошибка
+//	char *r;
+//
+//	i = 1;
+
+	//env_struct->exp_arg =
+// 	env_struct->str = ft_strdup(massiv); // вся строка (str=3ptr)
+// 	env_struct->key = parser_key_export(env_struct->str); //ключ (str)
+// //	if (massiv))
+// //		env_struct->value = NULL;
+// 	while(*massiv)
+// 	{
+// 		if (*massiv == '=')
+// 			env_struct->value = parser_env_export(env_struct->str); //значение с равно (=ptr3)
+// 		// else
+// 		// 	env_struct->value = NULL;
+// 		massiv++;
+// 	}
+// 	sm = 0;
+// 	i = 0;
+// 	if (env_struct->key[i] == '_' || !(ft_isalpha(env_struct->key[i])))// если ПЕРВЫЙ символ в ключе цифры или символ, кроме _ : ошибка
+// 		sm = 1;
+// 	i = -1;
+// 	while (env_struct->key[++i]) //если в ключе содержаться символы кроме букв, цифр и _ ошибка
+// 	{
+// 		if (!(ft_isalnum(env_struct->key[i])) && env_struct->key[i] != '_')
+// 			sm = 1;
+// 	}
+// 	if (sm != 1)
+// 		ft_start_exp(env, env_struct);
+// 	if (sm == 1) // в случае ошибки в ключе
+// 	{
+// 		write(2,"export: ", 8);
+// 		write(2,"\'", 1);
+// 		ft_putstr_fd(env_struct->str, 2); //TODO + очищение памяти
+// 		free(env_struct->key);
+// 		free(env_struct->str);
+// 		write(2,"\'", 1);
+// 		write(2,": not a valid identifier\n", 25);
+// 	}
+    int i;
+    int j;
+
+    i = 0;
+    while (massiv[i])
+        i++;
+    env_struct->env_arg = (char**)malloc((sizeof(char*) * i));
+    i = 1;
+    j = 0;
+    while (massiv[i])
+    {
+        printf("massiv %s\n", massiv[i]);
+        env_struct->env_arg[j] = ft_strdup(massiv[i]);
+        printf("env    %s\n", env_struct->env_arg[i]);  //не записывает стрдап
+        i++;
+        j++;
+    }
+    i = 0;
+    while (env_struct->env_arg[i])
+    {
+        env_struct->key = return_key(env_struct->env_arg[i]);
+        env_struct->value = ft_strchr(env_struct->env_arg[i], '=');
+        printf("key    %s\n", return_key(env_struct->env_arg[i]));
+        printf("value  %s\n", env_struct->value);
+        i++;
+    }
+    //проверка ключа и значения как раньше, в случае ошибки вывод ошибки
 }
 
 void parser_export(char **massiv, t_env *env_struct, char **env)
 {
-    env_struct->key = NULL; // инициаилизатор
-    env_struct->value = NULL; // инициаилизатор
-    if (massiv[1] != NULL)
-        parser_export2(massiv[1], env_struct, env);
-    ft_start_exp(env, env_struct);
+//    env_struct->key = NULL; // инициаилизатор
+    if (massiv[1] == NULL)
+        ft_out_exp(env_struct);
+    else
+    {
+        parser_export2(massiv, env_struct, env);
+        export(env_struct);
+    }
 }
 
 void my_exit(char **str)
@@ -168,35 +222,44 @@ void my_exit(char **str)
 		exit (0);
 }
 
-void work_with_execve(char *mass)
+void work_with_execve(t_all *all, char *mass)
 {
-	if (mass[0] == '.')
-	{
+	char **new_str;
 
+	// if (mass[0] == '.')
+	// {
+
+	// }
+	if (!(find_element(&all->env, "PATH")))
+	{
+		write(1, "Minishell>> 2: command not found\n", 20);
+		return ;
+		// return(ft_putchar(2));
 	}
-	// else if (find_path(mass, "PATH"))
+	//new_str = ft_split(find_element(&all->env, "PATH"), ':');
+
+
 }
 
 void find_command(t_all *all, char **env)
 {
-	t_env env_struct;
-
+	printf("%d\n", all->env_struct.count_lines);
 	if (!ft_strncmp(all->result[0], "echo", 5))
 		parser_echo(all->result);
 	else if (!ft_strncmp(all->result[0], "export", 7))
-		parser_export(all->result, &env_struct, env);
+		parser_export(all->result, &all->env_struct, env);
 	else if (!ft_strncmp(all->result[0], "cd", 3))
-		ft_cd(&env_struct);// если пусто тильда или записать new_dir
+		ft_cd(&all->env_struct);// если пусто тильда или записать new_dir
 	else if (!ft_strncmp(all->result[0], "pwd", 4))
 		ft_pwd();
 	// else if (!ft_strncmp(all->result[0], "unset", 6))
 	// 	parser_unset(all->result);
 	else if (!ft_strncmp(all->result[0], "env", 4))
-		ft_out_env(&env_struct);
+		ft_out_env(&all->env_struct);
 	else if (!ft_strncmp(all->result[0], "exit", 5))
 		my_exit(all->result);
 	else
-		work_with_execve(all->result[0]);
+		work_with_execve(all, all->result[0]);
 }
 
 char *skip_space(char *str)
@@ -274,6 +337,7 @@ char	*find_element(t_list_env **list, char *key)
 		return (NULL);
 	}
 }
+
 char *ft_new_m(char *str, int len)
 {
 	char	*s;
@@ -290,12 +354,11 @@ char *ft_new_m(char *str, int len)
 	return (s);
 }
 
-char *check_env(char **str)
+char *check_env(char **str, t_all *all)
 {
 	char	*s;
 	char	*p;
 	int		i;
-	t_all *all;
 
 	*str += 1;
 	p = *str;
@@ -321,6 +384,7 @@ char *check_env(char **str)
 				&& p[i] != '$' && p[i] != '>' && p[i] != '<')
 		i++;
 	p = ft_new_m(*str, i);
+	// printf("p: %s/n", p);
 	*str += i;
 	s = find_element(&all->env, p);
 	free(p);
@@ -329,14 +393,14 @@ char *check_env(char **str)
 	return (s);
 }
 
-char *parser_result(char **str)
+char *parser_result(char **str, t_all *all)
 {
 	if(**str == '\"')
 		return(check_double_quotes(str));
 	else if(**str == '\'')
 		return(check_single_quotes(str));
 	else if (**str == '$')
-		return(check_env(str));
+		return(check_env(str, all));
 	else
 		return(before(str));
 }
@@ -348,31 +412,106 @@ void 		list_count(t_cnt *words, void *s)
 	words->count++;
 }
 
-void allocate_mem(t_all *all, t_cnt *words)
+void mem_for_result(t_all *all, t_cnt *words, int count_w)
 {
-	int j;
+	int n;
 	t_list *tmp;
 
+	n = 0;
+	all->result = (char *)malloc(sizeof(char *) * (count_w + 1));
+	all->result[count_w] = NULL;
 	tmp = words->list;
-	all->result = malloc(sizeof(char *) * (words->count + 1));
-	all->result[words->count] = NULL;
-	j = 0;
-	while (j < words->count)
+	while (n < count_w)
 	{
-		all->result[j++] = tmp->content;
+		all->result[n++] = tmp->content;
 		tmp = tmp->next;
 	}
 }
 
+static void	pipe_function(t_all *matur, int **buf_fd, int max, int i)
+{
+	if (i == 0)
+	{
+		close(buf_fd[i][0]);
+		dup2(buf_fd[i][1], 1);
+	}
+	else 
+	{
+		if (i < max)
+		{
+			close(buf_fd[i - 1][1]);
+			dup2(buf_fd[i - 1][0], 0);
+			close(buf_fd[i][0]);
+			dup2(buf_fd[i][1], 1);
+		}
+		else
+		{
+			close(buf_fd[i - 1][1]);
+			dup2(buf_fd[i - 1][0], 0);
+		}
+	}
+	matur->pipe_f = 1;
+}
+
+// static int	**create_arr_fd_and_pid(int count_pipe, int **buf_pid)
+// {
+// 	int	**buf_fd;
+// 	int	i;
+
+// 	buf_fd = (int **)malloc(sizeof(int *) * count_pipe);
+// 	if (!buf_fd)
+// 		return (NULL);
+// 	i = -1;
+// 	while (++i < count_pipe)
+// 	{
+// 		buf_fd[i] = (int *)malloc(sizeof(int) * 2);
+// 		pipe(buf_fd[i]);
+// 	}
+// 	*buf_pid = (int *)malloc(sizeof(int) * (count_pipe + 1));
+// 	return (buf_fd);
+// }
+
+// void parser_pipes(int p, t_list **mass, t_all *all, char **env)
+// {
+// 	int		*buf_pid;
+// 	int		**buf_fd;
+// 	t_list	*tmp;
+// 	int		i;
+
+// 	p = p -  1;
+// 	buf_fd = create_arr_fd_and_pid(p, &buf_pid);
+// 	tmp = *mass;
+// 	i = 0;
+// 	while (tmp != NULL)
+// 	{
+// 		all->result = tmp->content;
+// 		buf_pid[i] = fork();
+// 		if (buf_pid[i] > 0 && i != p)
+// 			close(buf_fd[i][1]);
+// 		else if (buf_pid[i] == 0)
+// 		{
+// 			pipe_function(all, buf_fd, p, i);
+// 			find_command(all, env);
+// 			free(buf_fd);
+// 			exit (0);
+// 		}
+// 		i++;
+// 		tmp = tmp->next;
+// 	}
+// 	while (--i >= 0)
+// 		waitpid(buf_pid[i], NULL, 0);
+// }
+
 void process(t_all *all, t_cnt *words, t_cnt *pipes, char **str, char **env)
 {
-	if (words->count != 0)
+	if (words->count > 0)
 	{
-		allocate_mem(all, words);
+		mem_for_result(all, words, words->count);
 		list_count(pipes, all->result);
 		if(pipes->count == 1)
-		// if (ft_strlen(all->result[0]) > 0)
 			find_command(all, env);
+//		else
+//			parser_pipes(pipes->count, &pipes->list, all, env);
 	}
 	clear_list(words);
 	clear_list(pipes);
@@ -407,16 +546,15 @@ char	*strjoin_free(char *str1, char *str2)
 	return (p);
 }
 
+
 t_all *parser(char *str, t_all *all, char **env)
 {
 	t_cnt	words;
 	t_cnt	pipes;
-	int		count;
 	int		j;
 	//int		len;
 	char	*s;
 
-	count = 0;
 	ft_bzero(&words, sizeof(t_cnt));
 	ft_bzero(&pipes, sizeof(t_cnt));
 	while (*str != '\0')
@@ -425,26 +563,32 @@ t_all *parser(char *str, t_all *all, char **env)
 		check_sim(str);
 		// if (*str == '<' || *str == '>')
 		// 	parser_redirect(&str, all, &words);
-		s = parser_result(&str);
+		s = parser_result(&str, all);
 		while (*str != '\0' && *str != ' ' && *str != '|')
-			s = strjoin_free(s, parser_result(&str));
+			s = strjoin_free(s, parser_result(&str, all));
 		list_count(&words, s);
 		str = skip_space(str);
 		if (*str == '|')
 		{
 			if (words.count > 0)
 			{
-				allocate_mem(all, &words);
+				mem_for_result(all, &words, words.count);
 				if (**all->result)
 					list_count(&pipes, all->result);
-//				else
-//					error
-				clear_list_w(&words);
-				str++;
+				// else
+				// {
+				// 	write(1, "syntax error ", 14);
+				// 	all->error = 258;
+				// 	*(str + 1) = 0;
+				// }
+					clear_list_w(&words);
+					str++;
 			}
 		}
 	}
 	process(all, &words, &pipes, &str, env);
+	// clear_list(&words);
+	// clear_list(&pipes);
 	return (all);
 }
 
@@ -663,38 +807,37 @@ int main(int ac, char **av, char **env)
 	int		i;
 	t_all	*all;
 	int				fd;
-	t_parser pars;
-	t_env env_struct;
-	static t_history	history;
+	// t_env env_struct;
 
-	env_struct.key = "name";
-	env_struct.value = "=";
+	// all->env_struct.key = "name";
+	// env_struct.value = "=";
 
 	all = (t_all *) ft_calloc(1, sizeof(t_all));
 	get_env(all, env);
-	ft_init_flags(&env_struct);
-	ft_copy_env(env, &env_struct);
+	ft_init_flags(&all->env_struct, env);
+//	ft_copy_env(env, &all->env_struct);  //вынесла в инициализатор
 	if (ac > 1 && av[1] != NULL)
 		ft_putstr_fd("Invalid arguments\n", 1);
+	signal(SIGINT, signal_ctrlc);
 	while (1)
 	{
-		 str = readline ("Minishell>> ");
-		 if (str == NULL)
-		 {
-		 	write(1, "exit\n", 5);
-		 	write(fd, "exit\n", 5);
-		 	free(str);
-		 	free(all);
-		 	return (0);
-		 }
-		 if (str && *str)
-		 {
-		 	 write(fd, str, ft_strlen(str));
-		 	 write(fd, "\n", 1);
-		 	 add_history(str);
-		 	 parser(str, all, env);
+		str = readline ("Minishell>> ");
+		if (str == NULL)
+		{
+			write(1, " exit\n", 6);
+			// write(fd, "exit\n", 5);
 			free(str);
-		 }
+			free(all);
+		 	return (0);
+		}
+		if (str && *str)
+		{
+			write(fd, str, ft_strlen(str));
+			write(fd, "\n", 1);
+			add_history(str);
+			parser(str, all, env);
+			free(str);
+		}
 	}
 	// close(fd);
 	return 0;

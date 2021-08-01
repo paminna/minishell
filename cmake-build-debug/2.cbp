@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug"/>
+				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug"/>
+				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug"/>
+				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="2">
-				<Option output="/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug"/>
+				<Option output="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -52,15 +52,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 2"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 2"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="2/fast">
-				<Option output="/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug"/>
+				<Option output="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -73,56 +73,56 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 2/fast"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/last\ version/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 2/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/paminna/Downloads/Telegram\ Desktop/started\ pipes\ and\ export/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/env.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/env.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/export.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/export.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/function/cd.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/function/cd.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/function/ft_unset.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/function/ft_unset.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/function/pwd.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/function/pwd.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/get_next_line.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/get_next_line.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/get_next_line_utils.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/get_next_line_utils.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/libft.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/libft.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/main.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/main.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/mini.h">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/mini.h">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/parser/parser_first_s.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/parser/parser_first_s.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/parser/parser_quotes.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/parser/parser_quotes.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/signals.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/signals.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/work_with_list/free_l.c">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/work_with_list/free_l.c">
 			<Option target="2"/>
 		</Unit>
-		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/last version/CMakeLists.txt">
+		<Unit filename="/Users/paminna/Downloads/Telegram Desktop/started pipes and export/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

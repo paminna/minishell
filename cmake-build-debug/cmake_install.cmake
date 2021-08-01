@@ -1,4 +1,4 @@
-# Install script for directory: /Users/paminna/Downloads/Telegram Desktop/last version
+# Install script for directory: /Users/paminna/Downloads/Telegram Desktop/started pipes and export
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -4,19 +4,19 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/paminna/Downloads/Telegram Desktop/last version/env.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/env.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/export.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/export.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/function/cd.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/function/cd.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/function/ft_unset.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/function/ft_unset.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/function/pwd.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/function/pwd.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/get_next_line.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/get_next_line.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/get_next_line_utils.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/get_next_line_utils.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/libft.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/libft.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/main.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/main.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/parser/parser_first_s.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/parser/parser_first_s.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/parser/parser_quotes.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/parser/parser_quotes.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/signals.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/signals.c.o"
-  "/Users/paminna/Downloads/Telegram Desktop/last version/work_with_list/free_l.c" "/Users/paminna/Downloads/Telegram Desktop/last version/cmake-build-debug/CMakeFiles/2.dir/work_with_list/free_l.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/env.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/env.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/export.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/export.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/function/cd.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/function/cd.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/function/ft_unset.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/function/ft_unset.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/function/pwd.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/function/pwd.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/get_next_line.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/get_next_line.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/get_next_line_utils.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/get_next_line_utils.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/libft.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/libft.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/main.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/main.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/parser/parser_first_s.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/parser/parser_first_s.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/parser/parser_quotes.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/parser/parser_quotes.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/signals.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/signals.c.o"
+  "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/work_with_list/free_l.c" "/Users/paminna/Downloads/Telegram Desktop/started pipes and export/cmake-build-debug/CMakeFiles/2.dir/work_with_list/free_l.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
